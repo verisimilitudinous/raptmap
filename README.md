@@ -33,15 +33,13 @@ Finally, use Docker Compose to start up the app. Depending upon your system, you
 docker-compose up
 ```
 
-Your first use of this `up` command will take some time. Docker needs to download all of the app's dependencies. Subsequent runs will be much quicker.
-
-Go to [localhost:3000](http://localhost:3000). The app should be running. You'll see an error message; that's normal until the databases are created.
+Your first use of this `up` command will take some time. Docker needs to download all of the app's dependencies. Subsequent runs will be much quicker. Go to [localhost:3000](http://localhost:3000). The app should be running. You'll see an error message; that's normal until the databases are created.
 
 ## Docker pitfalls
 
 If Docker gives you shade about port conflicts on the host machine (i.e., your computer), then there are a few options:
 
-* set up Docker and run this app within a clean VM;
+* set up Docker, and run this app, within a clean VM;
 * sniff out the conflicting ports on your machine and stop said services, then try again;
 * change the port mappings in `docker-compose.yml` and your `.env` file.
 
@@ -114,7 +112,7 @@ webpack -p
 
 # Defunct React-based UI
 
-The initial UI was built around a full-screen map with [Leaflet](http://leafletjs.com/), [React](https://facebook.github.io/react/), and [Redux](http://redux.js.org/). The carcass can be viewed at [localhost:3000/map_test](http://localhost:3000/map_test) in dev. Related Javascript and JSX can be found in `app/assets/javascripts/map`.
+The initial UI was built around a full-screen map with [Leaflet](http://leafletjs.com/), [React](https://facebook.github.io/react/), and [Redux](http://redux.js.org/). The carcass can be viewed at [/map_test](https://raptmap.com/map_test). Related Javascript and JSX can be found in `app/assets/javascripts/map`.
 
 This was scrapped when it became clear that the full-screen map concept would not serve the goals of the service or its users. Still, we need a map somewhere, because the thing is called "Raptmap", right? The current plan is to integrate some of this work into the current UI, in ways that make more sense.
 
