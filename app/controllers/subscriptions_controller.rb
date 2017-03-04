@@ -16,12 +16,6 @@ class SubscriptionsController < ApplicationController
     @location.geolocate_by_ip(request.remote_ip)
   end
 
-  def test_ip
-    @location = Location.new
-    @location.geolocate_by_ip("1.2.3.4")
-    render text: (@location.latitude.to_s + "::" + @location.longitude.to_s)
-  end
-
   def results
     if topic_params[:name].present?
       @topic = Topic.where(Topic.arel_table[:name].matches(topic_params[:name])).first_or_initialize(name: topic_params[:name])
@@ -78,6 +72,17 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.find_by_uid(params[:subscription][:uid])
     @subscription.safely_destroy
     redirect_to subscriptions_url, notice: t('.notice')
+  end
+
+  def test_ip
+    @location = Location.new
+    @location.geolocate_by_ip("1.2.3.4")
+    render text: (@location.latitude.to_s + "::" + @location.longitude.to_s)
+  end
+
+  def map_test
+    @subscription = Subscription.new
+    render layout: "full_screen_map"
   end
 
   private

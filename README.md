@@ -2,6 +2,7 @@
 
 Welcome to the repo for [raptmap.com](https://raptmap.com "Rapt Map"). Although the site is live and running, this code is definitely not production quality yet. You've been warned!
 
+
 # Dependencies
 
 Raptmap runs on Docker. You'll need to install both [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) to prop up the app. (You may also need [Docker Machine](https://docs.docker.com/machine/) depending upon your Linux distribution.) Consult the following links to get started.
@@ -9,6 +10,7 @@ Raptmap runs on Docker. You'll need to install both [Docker Engine](https://docs
 https://docs.docker.com/engine/installation/
 
 https://docs.docker.com/compose/install/
+
 
 # Up and running
 
@@ -35,6 +37,7 @@ Your first use of this `up` command will take some time. Docker needs to downloa
 
 Go to [localhost:3000](http://localhost:3000). The app should be running. You'll see an error message; that's normal until the databases are created.
 
+
 # Creating the databases
 
 Upon first run, you'll need to create the relevant postgres databases for Rails. First create the databases...
@@ -55,6 +58,7 @@ The site should now be functional. If you're using `sudo` with `docker-compose` 
 docker-compose exec --user "$(id -u):$(id -g)" rails rails db:migrate
 ```
 
+
 # More on Docker Compose
 
 To suppress the rolling logs, add the `-d` flag to your `up` command. This starts the app in daemon mode.
@@ -63,7 +67,7 @@ To suppress the rolling logs, add the `-d` flag to your `up` command. This start
 docker-compose up -d
 ```
 
-To rebuild the Docker images, just in case your edits don't take, add `--build`. This will rebuild the Docker images as defined in docker-compose.yml.
+To rebuild the Docker images, just in case your Docker-related edits don't take, add `--build`. This will rebuild the Docker images as defined in docker-compose.yml.
 
 ```bash
 docker-compose up --build -d
@@ -83,6 +87,7 @@ To run in production mode, call the `docker-compose-prod.yml` file.
 docker-compose -f docker-compose-prod.yml up -d
 ```
 
+
 # Working with webpack
 
 Unlike a traditional Rails application, here the [Asset Pipeline](http://guides.rubyonrails.org/asset_pipeline.html) has been ripped out in favor of [webpack](https://webpack.github.io). Furthermore, Javascript dependencies are managed with [Yarn](https://yarnpkg.com/en/). [The next point release of the Rails framework, 5.1, will include native support for both webpack and Yarn](https://github.com/rails/webpacker), but for now, we're rolling with this custom setup.
@@ -98,6 +103,13 @@ Before deploying to prod, use the `-p` flag. This will minify assets and fingerp
 ```bash
 webpack -p
 ```
+
+# Defunct React-based UI
+
+The initial UI was built around a full-screen map with [Leaflet](http://leafletjs.com/), [React](https://facebook.github.io/react/), and [Redux](http://redux.js.org/). The carcass can be viewed at [localhost:3000/map_test](http://localhost:3000/map_test) in dev. Related Javascript and JSX can be found in `app/assets/javascripts/map`.
+
+This was scrapped when it became clear that the full-screen map concept would not serve the goals of the service or its users. Still, we need a map somewhere, because the thing is called "Raptmap", right? The current plan is to integrate some of this work into the current UI, in ways that make more sense.
+
 
 # Major tasks ahead
 
