@@ -1,0 +1,9 @@
+<% if @subscription.errors.any? %>
+  <div id="error-explanation" class="content-blok">
+    <ul>
+      <% @subscription.errors.each do |attr, msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

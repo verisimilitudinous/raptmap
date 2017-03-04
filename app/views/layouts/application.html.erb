@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    fingerprinted_asset('application'), media: 'all' %>
+    <%= javascript_include_tag fingerprinted_asset('application') %>
+    <% if controller_name == 'rich_search' %>
+      <%= stylesheet_link_tag    fingerprinted_asset('rich_search'), media: 'all' %>
+      <%= javascript_include_tag fingerprinted_asset('rich_search') %>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <% end %>
+    <meta property="og:url"           content="<%= request.original_url %>" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="<%= full_title(yield(:title)) %>" />
+    <meta property="og:description"   content="<%= full_description(yield(:description)) %>" />
+    <meta property="og:image"         content="https://raptmap.com/images/heart-marker-pano.png" />
+    <%= render 'layouts/shim' %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <div id="main">
+      <%= render 'layouts/header' %>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+    <%= debug(params) if Rails.env.development? %>
+  </body>
+</html>

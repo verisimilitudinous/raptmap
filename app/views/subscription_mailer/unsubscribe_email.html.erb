@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div class="content-blok">
+      <h2>
+        <%= t('subscription_mailer.unsubscribe_email.unsubscribe_heading') %>
+      </h2>
+      <p>
+        <%= t('subscription_mailer.unsubscribe_email.unsubscribe_summary_html') %>
+      </p>
+    </div>
+    <% @subscriptions.each do | subscription | %>
+    <div class="content-blok">
+      <p>
+        <%= link_to t('subscription_mailer.unsubscribe_email.unsubscribe_link_html', {
+          topic_name: subscription.topic.name,
+          radius_length: subscription.location.radius_length,
+          radius_units: subscription.location.radius_units,
+          location_name: subscription.location.name}), unsubscriber_url(unsubscribe_uid: subscription.unsubscribe_uid) %>
+      </p>
+    </div>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: "jon@gmail.com"
+
+two:
+  email: "rieko@gmail.com"
+
+three:
+  email: "gen@gmail.com"

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t('layouts.header.heading') %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= Gon::Base.render_data %>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    fingerprinted_asset('map'), media: 'all' %>
+    <%= javascript_include_tag fingerprinted_asset('map') %>
+    <%= render 'layouts/shim' %>
+  </head>
+  <body class="<%= controller_name %> <%= action_name %>">
+    <%= render 'layouts/header' %>
+    <div id="map"></div>
+    <div id="test"></div>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </body>
+</html>

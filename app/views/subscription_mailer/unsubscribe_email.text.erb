@@ -1,0 +1,18 @@
+<%= t('subscription_mailer.unsubscribe_email.unsubscribe_heading') %>
+
+<%= t('subscription_mailer.unsubscribe_email.unsubscribe_summary_html') %>
+
+<% @subscriptions.each do | subscription | %>
+
+######
+
+<%= t('subscription_mailer.unsubscribe_email.unsubscribe_link_html', {
+  topic_name: subscription.topic.name,
+  radius_length: subscription.location.radius_length,
+  radius_units: subscription.location.radius_units,
+  location_name: subscription.location.name
+}) %>
+
+<%= unsubscriber_url(unsubscribe_uid: subscription.unsubscribe_uid) %>
+
+<% end %>

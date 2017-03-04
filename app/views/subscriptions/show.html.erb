@@ -1,0 +1,92 @@
+<% provide(:title, t('.title', subscription_attrs_for_localization)) %>
+<% provide(:description, t('.description', subscription_attrs_for_localization)) %>
+
+
+<div class="content-blok">
+  <h2>
+    <%= t('.summary_heading', topic_name: @subscription.topic.name) %>
+  </h2>
+  <p>
+    <%= t('.summary_html', subscription_attrs_for_localization) %>
+  </p>
+</div>
+<div class="content-blok">
+  <h3>
+    <%= t('.getting_started_heading') %>
+  </h3>
+  <h4>
+    <%= t('.getting_started_html_1') %>
+  </h4>
+  <p>
+    <%= t('.getting_started_html_2', subscription_attrs_for_localization) %>
+  </p>
+  <% if false %>
+  <aside>
+    <p>
+      <%= t('.conversations_html', subscription_attrs_for_localization_with_count(@fellow_posters_count)) %>
+    </p>
+  </aside>
+  <% end %>
+  <h4>
+    <%= t('.starting_conversations_heading') %>
+  </h4>
+  <p>
+    <%= t('.starting_conversations_html', subscription_attrs_for_localization) %>
+  </p>
+  <%= link_to "#{@subscription.uid}@#{t('mail_domain')}", "mailto:#{@subscription.uid}@#{t('mail_domain')}", class: "email-conversation-link" %>
+  <aside>
+    <p>
+      <%= t('.listeners_html', subscription_attrs_for_localization_with_count(@fellow_listeners_count)) %>
+    </p>
+  </aside>
+</div>
+<div class="content-blok">
+  <h3>
+    <%= t('.sharing_heading') %>
+  </h3>
+  <p>
+    <%= t('.sharing_html', subscription_attrs_for_localization) %>
+  </p>
+  <h4>
+    <%= t('.share_without_location_heading') %>
+  </h4>
+  <div>
+    <%= text_field_tag "topic_sharing_link", topic_sharing_url, readonly: true, class: "sharing-url" %>
+  </div>
+  <div class="sharing-social-links">
+    <a class="sharing-social" href="<%= topic_sharing_url %>">URL</a>
+    <a class="sharing-social" href="https://www.facebook.com/sharer/sharer.php?u=<%= topic_sharing_url %>">Facebook</a>
+    <a class="sharing-social" href="https://twitter.com/home?status=<%= topic_sharing_url %>">Twitter</a>
+    <a class="sharing-social" href="https://plus.google.com/share?url=<%= topic_sharing_url %>">Google+</a>
+  </div>
+  <h4>
+    <%= t('.share_with_location_heading') %>
+  </h4>
+  <div>
+    <%= text_field_tag "topic_and_location_sharing_link", topic_and_location_sharing_url, readonly: true, class: "sharing-url" %>
+  </div>
+  <div class="sharing-social-links">
+    <a class="sharing-social" href="<%= topic_and_location_sharing_url %>">URL</a>
+    <a class="sharing-social" href="https://www.facebook.com/sharer/sharer.php?u=<%= topic_and_location_sharing_url %>">Facebook</a>
+    <a class="sharing-social" href="https://twitter.com/home?status=<%= topic_and_location_sharing_url %>">Twitter</a>
+    <a class="sharing-social" href="https://plus.google.com/share?url=<%= topic_and_location_sharing_url %>">Google+</a>
+  </div>
+</div>
+
+<div class="content-blok">
+  <h3>
+    <%= t('.additional_subscription_heading') %>
+  </h3>
+  <%= link_to t('.additional_subscription_html'), search_subscriptions_path %>
+</div>
+
+<% if false #if Rails.env.development? %>
+<div class="content-blok">
+  <ul>
+    <li>New subscription: <%= @subscription.uid %></li>
+    <li><%= @subscription.topic.name %>: <%= @subscription.topic.uid %></li>
+    <li><%= @subscription.location.name %>: <%= @subscription.location.uid %></li>
+    <li><%= @subscription.user.email %>: <%= @subscription.user.uid %></li>
+  </ul>
+</div>
+<% end %>

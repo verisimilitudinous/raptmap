@@ -1,0 +1,6 @@
+yarn-error.log
+.git
+.dockerignore
+/node_modules/*
+/log/*
+/tmp/*

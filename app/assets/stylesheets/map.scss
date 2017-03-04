@@ -1,0 +1,187 @@
+@import "pure-min";
+@import "grids-responsive-min";
+
+html, body, #map {
+  width:100%;
+  height:100%;
+  margin: 0;
+}
+
+#map {
+
+  .content-blok {
+    margin: 0;
+    background: white;
+    padding: .5em;
+  }
+
+  .footer {
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      display: inline;
+      margin: 0 .5em 0 0;
+    }
+
+    small {
+      display: none;
+    }
+  }
+}
+
+header h1 {
+  margin: 0;
+  float: left;
+}
+
+header p {
+  margin: 0;
+  clear: both;
+}
+
+header img {
+  float: right;
+}
+
+div.field input {
+  width: 15.7em;
+  height: 2em;
+  padding: 0 .5em;
+  font-size: 1em;
+  font-family: serif;
+  border: 1px solid #aaa;
+  border-radius: .3em;
+}
+
+div.field select {
+  height: 2.1em;
+  padding: 0 .5em;
+  margin: 0 0 0 .5em;
+}
+
+div.field {
+  position: relative;
+  float: left;
+}
+
+.react-autosuggest__container {
+  position: relative;
+  float: left;
+}
+
+button {
+  height: 2.1em;
+  margin: 0 0 0 .5em;
+  font-size: 1em;
+  font-family: serif;
+  border-radius: .3em;
+}
+
+.react-autosuggest__input {
+  width: 23.3em;
+  height: 2em;
+  padding: 0 .5em;
+  font-size: 1em;
+  font-family: serif;
+  border: 1px solid #aaa;
+  border-radius: .3em;
+}
+
+.react-autosuggest__input:focus {
+  outline: none;
+}
+
+.react-autosuggest__container--open .react-autosuggest__input {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+  display: none;
+}
+
+.react-autosuggest__container--open .react-autosuggest__suggestions-container {
+  display: block;
+  position: absolute;
+  top: 2em;
+  width: 23.3em;
+  font-size: 1em;
+  font-family: serif;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  border-bottom-left-radius: .3em;
+  border-bottom-right-radius: .3em;
+  z-index: 2;
+}
+
+.react-autosuggest__suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+  cursor: pointer;
+  padding: .5em;
+}
+
+.react-autosuggest__suggestion--focused {
+  background-color: #ddd;
+}
+
+.widget-menu {
+
+}
+
+.widget-menu img {
+  position: absolute;
+  top: .6em;
+  height: 1em;
+}
+
+ul.widget-menu {
+  border-bottom: .1em gray solid;
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+li.widget-menu-item {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 10em;
+  padding: 0 .5em 0 0;
+  height: 1.1em; }
+
+li.widget-menu-item.activated {
+  color: red; }
+
+li.widget-menu-item span {
+  height: 1.5em;
+  font-size: 1em;
+  padding: 0 .3em 0 1.25em;
+  margin: 0; }
+
+  .react-form {
+    font-size: 1.2em;
+    width: 30em;
+     }
+
+     .leaflet-top {
+       z-index: 10000;
+     }
+
+.field, .auto-field {
+  margin:0;
+}
+
+p.field-prompt {
+  margin: .3em 0 .2em .3em;
+  padding: 0;
+}

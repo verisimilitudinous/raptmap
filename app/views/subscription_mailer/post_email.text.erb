@@ -1,0 +1,11 @@
+<%= @body %>
+
+###@###@###
+
+<%= t('subscription_mailer.post_email.unsubscribe_footer', {
+  topic_name: listener.topic.name,
+  location_name: listener.location.name,
+  radius_length: listener.location.radius_length,
+  radius_units: listener.location.radius_units }) %>
+
+https://raptmap.com/unsubscribe

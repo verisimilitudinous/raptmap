@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  topic_id: 1
+  location_id: 1
+
+two:
+  user_id: 1
+  topic_id: 1
+  location_id: 3
+
+three:
+  user_id: 2
+  topic_id: 1
+  location_id: 1
+
+four:
+  user_id: 3
+  topic_id: 1
+  location_id: 1
+
+five:
+  user_id: 2
+  topic_id: 2
+  location_id: 1

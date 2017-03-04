@@ -1,0 +1,154 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+  domain: "raptmap.com"
+  mail_domain: "mail.raptmap.com"
+  measurements:
+    km:
+      text: "kilometers"
+    m:
+      text: "meters"
+    mi:
+      text: "miles"
+    ft:
+      text: "feet"
+  layouts:
+    header:
+      heading: "The Rapt Map"
+      subheading: "Find and email nearby enthusiasts"
+    footer:
+      home: "Home"
+      about: "About"
+      privacy: "Privacy"
+      unsubscribe: "Unsubscribe"
+  static_pages:
+    about:
+      title: "About"
+      description: "All about the Rapt Map."
+  cancellations:
+    new:
+      unsubscribe_heading: "Unsubscribe"
+      unsubscribe_html: "Enter your email address below. We'll send you an email with details on all your current subscriptions, including unsubscribe links for each."
+      email_label: "Email address:"
+      submit_label: "Send unsubscribe email"
+    submit:
+      heading: "Almost Unsubscribed"
+      summary_html: "Check your email for further instructions."
+  subscription_mailer:
+    post_email:
+      unsubscribe_footer: "You've received this message from raptmap.com via your subscription to the %{topic_name} topic within %{radius_length} %{radius_units} of %{location_name}. If you feel you have received this message in error, you may unsubscribe at the link below."
+      subject: "New message to %{topic_name} near %{location_name}"
+      from: "%{uid} @ Rapt Map"
+    unsubscribe_email:
+      unsubscribe_heading: "Unsubscribe"
+      unsubscribe_summary_html: "All of your current subscriptions at the Rapt Map are listed below. Click on any link to unsubscribe."
+      unsubscribe_link_html: "Unsubscribe from %{topic_name} within %{radius_length} %{radius_units} of %{location_name}"
+      subject: "Unsubscribe"
+      from: "Rapt Map Reaper"
+    registration_email:
+      subject: "New subscription to %{topic_name} at %{location_name}"
+      from: "Rapt Map Registrar"
+  subscriptions:
+    destroy:
+      notice: "You are now unsubscribed."
+    create:
+      success: "Subscription created."
+    new:
+      title: "Sign up for %{topic_name}"
+      description: "Sign up page for the %{topic_name} topic within %{radius_length} %{radius_units} of %{location_name}."
+      confirmation_heading: "So, you're into %{topic_name}"
+      confirmation_html: "To exchange emails with folks interested in <strong>%{topic_name}</strong> within <strong>%{radius_length} %{radius_units}</strong> of <strong>%{location_name}</strong>, submit your email address below."
+      confirmation_disclaimer_html: "Don't worry, your real email address will never be revealed. The next page will give you a fake address for your use here."
+      email_label: "Email address:"
+      submit_label: "%{start_or_join} the conversation"
+    search:
+      topic_and_location_title: "%{topic_name} near %{location_name}"
+      topic_and_location_description: "Discuss %{topic_name} with others near %{location_name} at the Rapt Map."
+      topic_title: "%{topic_name}"
+      topic_description: "Find and discuss %{topic_name} with other nearby enthusiasts at the Rapt Map."
+      base_description: "Find and email nearby enthusiasts at the Rapt Map."
+      topic_label: "Find people who love:"
+      topic_placeholder: "e.g., Basketball, Knitting, Mah Jong, etc."
+      location_label: "Find them near:"
+      location_placeholder: "e.g., Fremont, CA, USA"
+      radius_label: "Find them within:"
+      radius_length_placeholder: "e.g., 5"
+      submit_label: "Join the conversation"
+    show:
+      title: "%{topic_name} near %{location_name}"
+      description: "Subscription details for the %{topic_name} topic within %{radius_length} %{radius_units} of %{location_name}."
+      summary_heading: "Welcome to %{topic_name} @ Rapt Map"
+      summary_html: "You are now subscribed to <strong>%{topic_name}</strong> within <strong>%{radius_length} %{radius_units}</strong> of <strong>%{location_name}</strong>."
+      getting_started_heading: "What's next?"
+      getting_started_html_1: "Nothing!"
+      getting_started_html_2: "Feel free to close your browser and forget all about us. As soon as someone in your area sends a message to %{topic_name}, we'll email it to you."
+      conversations_html:
+        zero: "However, it might be quiet for a while. At the moment, nobody else is signed up to %{topic_name} within your area."
+        one: "There's <strong>one</strong> other person signed up to %{topic_name} within your area."
+        other: "There are <strong>%{count}</strong> other people signed up to %{topic_name} within your area."
+      starting_conversations_heading: "Or, start a conversation"
+      starting_conversations_html: "Any messages sent to the following email address will be forwarded to anyone else signed up to %{topic_name} in your area. This is your special conversation starter, cherish it."
+      listeners_html:
+        zero: "Sadly, you'll be talking to yourself. For now, there are no other subscribers watching %{topic_name} at this location. Hang on to this address though, as it will become useful when others sign up later."
+        one: "There's currently <strong>one</strong> other person watching %{topic_name} at this location. Introduce yourself!"
+        other: "There are currently <strong>%{count}</strong> others watching %{topic_name} at this location. Introduce yourself!."
+      sharing_heading: "Spread the word"
+      sharing_html: "Invite other %{topic_name} enthusiasts to join the conversation by sharing the links below."
+      share_without_location_heading: "Share topic only"
+      share_with_location_heading: "Share topic with location"
+      unsubscribe_heading: "All done?"
+      unsubscribe: "Unsubscribe"
+      additional_subscription_heading: "Other interests?"
+      additional_subscription_html: "Subscribe to another topic"
+  activerecord:
+    errors:
+      models:
+        subscription:
+          attributes:
+            user_id:
+              taken: "You're already subscribed to this topic at this location."
+            location_id:
+              taken_with_exact_radius: "You are already subscribed to this topic at this location."
+              taken_with_new_radius: "You already have a subscription at this location, but with a different coverage area. You'll receive an email with additional instructions if you would like to change this."
+        user:
+          attributes:
+            email:
+              blank: "We'll need an email address to proceed."
+              invalid: "That's not a valid email address. Could you fix it?"
+              too_long: "That email address is way too long. Are you serious?"
+              reserved: "That email address is already in use."
+              not_found: "We couldn't find that email address in our systems."
+        topic:
+          attributes:
+            name:
+              blank: "Please add a discussion topic to proceed."
+              too_long: "Trim up that topic name. It's too long."
+              reserved: "That topic already exists."
+        location:
+          attributes:
+            name:
+              blank: "Please add a location to proceed."
+              placeless: "We could not find that location on the map. Could you be more specific?"
+            radius_length:
+              blank: "Please add a search distance to proceed."
+              not_a_number: "The search distance must be a number."

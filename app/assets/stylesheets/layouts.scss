@@ -1,0 +1,130 @@
+$blok-bottom-margin: 3em;
+
+.hidden {
+  display: none;
+}
+
+pre.debug_dump {
+  display:none;
+}
+
+#main {
+  text-align: left;
+  padding: 3em 1em;
+}
+
+header {
+
+  h1 {
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+img.heart-marker {
+  width: 1.5em;
+}
+
+
+.content-blok {
+  margin: 0 0 $blok-bottom-margin 0;
+}
+
+.fields-blok {
+  margin: 0;
+}
+
+footer ul {
+  padding: 0;
+  margin: 0 0 1em 0;
+  list-style-type: none;
+}
+
+.field {
+  margin: 0 0 $blok-bottom-margin 0;
+
+  input {
+    height: 2em;
+    padding: 0 .5em;
+  }
+
+  input.auto-field {
+    width: 20em;
+  }
+
+  input.radius-length-field {
+    width: 10em;
+  }
+
+  select.radius-units-select {
+    width: 10em;
+  }
+
+  label {
+    margin: 0 0 .1em 0;
+    display: block;
+  }
+
+  .field_with_errors {
+    display: inline;
+
+    input {
+      border-color:red;
+    }
+  }
+
+  img {
+    width: 2em;
+  }
+}
+
+.actions input {
+  height: 2em;
+}
+
+#error-explanation ul {
+  padding:0;
+  list-style-type: none;
+  color: red;
+}
+
+div.alert.alert-success {
+  color: green;
+}
+
+div.alert.alert-notice {
+  color: green;
+  margin: 0 0 $blok-bottom-margin 0
+}
+
+#main {
+  max-width: 70em;
+  margin: auto
+}
+
+aside p {
+  padding: 1em;
+  background-color: LightGray;
+  border-radius: .5em;
+}
+
+
+input.sharing-url {
+  width: 25em;
+  padding: .5em;
+}
+
+a.email-conversation-link {
+  font-size: 1.2em;
+}
+
+a.sharing-social {
+  padding: 0 0 0 .5em;
+}
+
+div.sharing-social-links {
+  margin: .5em 0;
+}

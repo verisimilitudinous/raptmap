@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div class="content-blok">
+      <h2>
+        <%= t('subscriptions.show.summary_heading', topic_name: @subscription.topic.name) %>
+      </h2>
+      <p>
+        <%= t('subscriptions.show.summary_html', subscription_attrs_for_localization) %>
+      </p>
+    </div>
+    <div class="content-blok">
+      <h3>
+        <%= t('subscriptions.show.getting_started_heading') %>
+      </h3>
+      <h4>
+        <%= t('subscriptions.show.getting_started_html_1') %>
+      </h4>
+      <p>
+        <%= t('subscriptions.show.getting_started_html_2', subscription_attrs_for_localization) %>
+      </p>
+      <h4>
+        <%= t('subscriptions.show.starting_conversations_heading') %>
+      </h4>
+      <p>
+        <%= t('subscriptions.show.starting_conversations_html', subscription_attrs_for_localization) %>
+      </p>
+      <%= link_to "#{@subscription.uid}@#{t('mail_domain')}", "mailto:#{@subscription.uid}@#{t('mail_domain')}" %>
+      <aside>
+        <p>
+          <%= t('subscriptions.show.listeners_html', subscription_attrs_for_localization_with_count(@fellow_listeners_count)) %>
+        </p>
+      </aside>
+    </div>
+    <div class="content-blok">
+      <h3>
+        <%= t('subscriptions.show.sharing_heading') %>
+      </h3>
+      <p>
+        <%= t('subscriptions.show.sharing_html', subscription_attrs_for_localization) %>
+      </p>
+      <h4>
+        <%= t('subscriptions.show.share_without_location_heading') %>
+      </h4>
+      <%= link_to topic_sharing_url, topic_sharing_url %>
+      <h4>
+        <%= t('subscriptions.show.share_with_location_heading') %>
+      </h4>
+      <%= link_to topic_and_location_sharing_url, topic_and_location_sharing_url %>
+    </div>
+    <div class="content-blok">
+      <h3>
+        <%= t('subscriptions.show.additional_subscription_heading') %>
+      </h3>
+      <%= link_to t('subscriptions.show.additional_subscription_html'), search_subscriptions_url %>
+    </div>
+    <hr>
+    <div class="content-blok">
+      <p>
+        <%= t('subscription_mailer.post_email.unsubscribe_footer', {
+          topic_name: @subscription.topic.name,
+          location_name: @subscription.location.name,
+          radius_length: @subscription.location.radius_length,
+          radius_units: @subscription.location.radius_units }) %>
+      </p>
+      <%= link_to "https://raptmap.com/unsubscribe", "https://raptmap.com/unsubscribe" %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<%= t('subscriptions.show.summary_heading', topic_name: @subscription.topic.name) %>
+
+<%= strip_tags(t('subscriptions.show.summary_html', subscription_attrs_for_localization)) %>
+
+### <%= t('subscriptions.show.getting_started_heading') %> ###
+
+<%= strip_tags(t('subscriptions.show.getting_started_html_1')) %>
+
+<%= strip_tags(t('subscriptions.show.getting_started_html_2', subscription_attrs_for_localization)) %>
+
+### <%= t('subscriptions.show.starting_conversations_heading') %> ###
+
+<%= strip_tags(t('subscriptions.show.starting_conversations_html', subscription_attrs_for_localization)) %>
+
+<%= "#{@subscription.uid}@#{t('mail_domain')}" %>
+
+<%= strip_tags(t('subscriptions.show.listeners_html', subscription_attrs_for_localization_with_count(@fellow_listeners_count))) %>
+
+### <%= t('subscriptions.show.sharing_heading') %> ###
+
+<%= strip_tags(t('subscriptions.show.sharing_html', subscription_attrs_for_localization)) %>
+
+#### <%= t('subscriptions.show.share_without_location_heading') %> ####
+
+<%= topic_sharing_url %>
+
+#### <%= t('subscriptions.show.share_with_location_heading') %> ####
+
+<%= topic_and_location_sharing_url %>
+
+### <%= t('subscriptions.show.additional_subscription_heading') %> ###
+
+<%= strip_tags(t('subscriptions.show.additional_subscription_html')) %>
+
+<%= search_subscriptions_url %>
+
+######
+
+<%= t('subscription_mailer.post_email.unsubscribe_footer', {
+  topic_name: @subscription.topic.name,
+  location_name: @subscription.location.name,
+  radius_length: @subscription.location.radius_length,
+  radius_units: @subscription.location.radius_units }) %>
+
+https://raptmap.com/unsubscribe

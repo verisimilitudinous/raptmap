@@ -1,0 +1,93 @@
+ja:
+  hello: "Hello World"
+  domain: "raptmap.com"
+  measurements:
+    km:
+      text: "キロメートル"
+    m:
+      text: "メートル"
+    mi:
+      text: "マイル"
+    ft:
+      text: "フィート"
+  layouts:
+    header:
+      heading: "ラプトマップ"
+      subheading: "ー近所で同じ興味を持つ人達と繋がろう！ー"
+    footer:
+      home: "Home"
+      about: "このサイトについて"
+      privacy: "Privacy"
+      unsubscribe: "登録の解除"
+  subscriptions:
+    destroy:
+      notice: "登録が解除されました。"
+    create:
+      success: "登録完了。"
+    new:
+      confirmation_heading: "Subscribe to %{topic_name}"
+      confirmation_html: "Got it. You would like to talk to people interested in <strong>%{topic_name}</strong> within <strong>%{radius_length} %{radius_units}</strong> of <strong>%{location_name}</strong>. To %{start_or_join} the conversation, submit your email address below. We'll hide your email address from other subscribers and otherwise keep it a secret."
+    subscribe_form:
+      email_label: "Email address:"
+      submit_label: "%{start_or_join} the conversation"
+    search_form:
+      topic_label: "Find people who love:"
+      topic_placeholder: "例）野球、編み物、山登り、等。"
+      location_label: "Find them near:"
+      location_placeholder: "例）東京都新宿区西新宿"
+      radius_label: "Find them within:"
+      radius_length_placeholder: "例）5（半角英数）"
+      submit_label: "検索"
+    show:
+      summary_heading: "Subscription to %{topic_name}"
+      summary_html: "You are now subscribed to <strong>%{topic_name}</strong> within <strong>%{radius_length} %{radius_units}</strong> of <strong>%{location_name}</strong>."
+      getting_started_heading: "Starting a conversation"
+      getting_started_html: "Here's the special email address where you'll be able to start conversations about %{topic_name} at %{location_name}."
+      listeners_html:
+        zero: "At the moment, there are no other subscribers watching %{topic_name} at this location. That means you'll be talking to yourself if you try to start a conversation. But that's okay! Save the email address above for later, when others subscribe in your area."
+        one: "There's currently <strong>one</strong> other person watching %{topic_name} at this location. Introduce yourself by starting a conversation at the email address above."
+        other: "There are currently <strong>%{count}</strong> others watching %{topic_name} at this location. Introduce yourself by starting a conversation at the email address adove."
+      joining_conversations_heading: "Joining a conversation"
+      joining_conversations_html: "Anyone else can start a conversation about %{topic_name} at any time. As a watcher, you will be included in any conversations posted within %{radius_length} %{radius_units} of %{location_name}."
+      posters_html:
+        zero: "Currently there are no other %{topic_name} fans subscribed within your watching area. It's going to be quiet for a while. But don't despair! Let others find you, and consider sending out the sign-up links below to anyone who might be interested."
+        one: "There's currently <strong>one</strong> other poster within your watching area. You'll automatically be included in any conversation he/she starts. Consider sharing the sign-up links below with others who might be interested."
+        other: "There are currently <strong>%{count}</strong> other posters within your watching area. You'll automatically be included in any conversations they start. Consider sharing the sign-up links below with others who might be interested."
+      sharing_heading: "Share with others"
+      share_without_location_html: "This link will only share the topic, without including your location. Useful if you want to keep your exact location private."
+      share_with_location_html: "This next link will share both the topic and the location together. Use this if you want to build a conversation around a specific location."
+      unsubscribe_heading: "All done?"
+      unsubscribe: "Unsubscribe"
+      additional_subscription_heading: "Other interests?"
+      additional_subscription_html: "Subscribe to another topic"
+  activerecord:
+    errors:
+      models:
+        subscription:
+          attributes:
+            user_id:
+              taken: "You're already subscribed to this topic at this location."
+            location_id:
+              taken_with_exact_radius: "You're already subscribed to this topic at this location."
+              taken_with_new_radius: "You already have a subscription at this location, but with a different coverage area. You'll receive an email with additional instructions if you would like to change this."
+        user:
+          attributes:
+            email:
+              blank: "We'll need an email address to proceed."
+              invalid: "That's not a valid email address. Could you fix it?"
+              too_long: "That email address is way too long. Are you serious?"
+              reserved: "That email address is already in use."
+        topic:
+          attributes:
+            name:
+              blank: "Please add a discussion topic to proceed."
+              too_long: "Trim up that topic name. It's too long."
+              reserved: "That topic already exists."
+        location:
+          attributes:
+            name:
+              blank: "Please add a location to proceed."
+              placeless: "We could not find that location on the map. Could you be more specific?"
+            radius_length:
+              blank: "Please add a search distance to proceed."
+              not_a_number: "The search distance must be a number."

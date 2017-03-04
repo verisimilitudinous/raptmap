@@ -1,0 +1,47 @@
+<% provide(:title, t('.title', subscription_attrs_for_localization)) %>
+<% provide(:description, t('.description', subscription_attrs_for_localization)) %>
+
+<div class="content-blok">
+  <h2>
+    <%= t('.confirmation_heading', topic_name: @subscription.topic.name) %>
+  </h2>
+  <p>
+    <%= t('.confirmation_html', topic_name: @subscription.topic.name,
+                                radius_length: @subscription.location.radius_length,
+                                radius_units: @subscription.location.radius_units,
+                                location_name: @subscription.location.name,
+                                start_or_join: start_or_join_conversation("start", "join")) %>
+  </p>
+  <aside>
+    <p>
+      <%= t('.confirmation_disclaimer_html') %>
+    </p>
+  </aside>
+</div>
+<%= render 'shared/errors' %>
+<%= form_for @subscription, url: subscriptions_path do |f| %>
+  <div class="pure-g fields-blok">
+    <%= f.fields_for :topic do |topic| %>
+      <%= topic.hidden_field :name %>
+    <% end %>
+    <%= f.fields_for :location do |location| %>
+      <%= location.hidden_field :name %>
+      <%= location.hidden_field :latitude %>
+      <%= location.hidden_field :longitude %>
+      <%= location.hidden_field :radius_length %>
+      <%= location.hidden_field :radius_units %>
+    <% end %>
+    <div class="pure-u-1">
+      <%= f.fields_for :user do |user| %>
+        <div class="field">
+          <%= image_tag 'envelope.svg' %>
+          <%= user.label :email, t('.email_label') %>
+          <%= user.text_field :email %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="actions content-blok">
+    <%= f.submit t('.submit_label', start_or_join: start_or_join_conversation("Start", "Join")) %>
+  </div>
+<% end %>

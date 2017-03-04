@@ -1,0 +1,50 @@
+<% sharing_title_and_desc %>
+
+<% if @topic.errors.any? or @location.errors.any? %>
+  <div id="error-explanation" class="content-blok">
+    <ul>
+      <% @topic.errors.each do |attr, msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      <% @location.errors.each do |attr, msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_tag results_subscriptions_path do %>
+  <div class="pure-g fields-blok">
+    <%= fields_for @topic do |topic| %>
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="field">
+          <%= image_tag 'heart.svg' %>
+          <%= topic.label :name, t('.topic_label') %>
+          <%= topic.text_field :name, class: 'topic-field auto-field', placeholder: t('.topic_placeholder') %>
+        </div>
+      </div>
+    <% end %>
+    <%= fields_for @location do |location| %>
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="field">
+          <%= image_tag 'map.svg' %>
+          <%= location.label :name, t('.location_label') %>
+          <%= location.text_field :name, class: 'location-field auto-field', placeholder: t('.location_placeholder') %>
+        </div>
+      </div>
+      <%= location.hidden_field :latitude %>
+      <%= location.hidden_field :longitude %>
+      <!-- <div id="map"></div> -->
+      <div class="pure-u-1 pure-u-lg-1-3">
+        <div class="field">
+          <%= image_tag 'binoculars.svg' %>
+          <%= location.label :radius_length, t('.radius_label') %>
+          <%= location.number_field :radius_length, class: 'radius-length-field', placeholder: t('.radius_length_placeholder') %>
+          <%= location.select :radius_units, units_array, {}, class: 'radius-units-select' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions content-blok">
+    <%= submit_tag t('.submit_label') %>
+  </div>
+<% end %>
