@@ -37,6 +37,14 @@ Your first use of this `up` command will take some time. Docker needs to downloa
 
 Go to [localhost:3000](http://localhost:3000). The app should be running. You'll see an error message; that's normal until the databases are created.
 
+## Docker pitfalls
+
+If Docker gives you shade about port conflicts on the host machine (i.e., your computer), then there are a few options:
+
+* set up Docker and run this app within a clean VM;
+* sniff out the conflicting ports on your machine and stop said services, then try again;
+* change the port mappings in `docker-compose.yml` and your `.env` file.
+
 
 # Creating the databases
 

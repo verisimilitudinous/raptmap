@@ -1,6 +1,6 @@
 #!/bin/bash
 
-project_path="/home/raptmap/containers/raptmap"
+project_path="/home/ferret/containers/raptmap"
 compose_file_path="$project_path/docker-compose-prod.yml"
 needs_restart=false
 
