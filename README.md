@@ -17,7 +17,7 @@ https://docs.docker.com/compose/install/
 Go ahead and clone the repo.
 
 ```bash
-git clone git@github.com:verisimilitudinous/raptmap.git
+git clone git@github.com:xjensen/raptmap.git
 cd raptmap
 ```
 
@@ -71,6 +71,13 @@ To suppress the rolling logs, add the `-d` flag to your `up` command. This start
 
 ```bash
 docker-compose up -d
+```
+
+Check the status of the app in daemon mode.
+
+```bash
+docker-compose ps # lists the active container(s)
+docker-compose logs # lists recent output to stdout
 ```
 
 To rebuild the Docker images, just in case your Docker-related edits don't take, add `--build`. This will rebuild the Docker images as defined in docker-compose.yml.
