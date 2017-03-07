@@ -110,7 +110,8 @@ class Subscription < ApplicationRecord
             # It's okay to be subscribed in multiple locations, but we want to make sure this isn't a dupe.
             self.location.geocode_as_needed
             location_query = Location.joins(subscription: [:topic, :user])
-                                     .where(topics: {name: self.topic.name},
+                                     .where(subscriptions: {active: true},
+                                            topics: {name: self.topic.name},
                                             locations: {latitude: self.location.latitude,
                                                         longitude: self.location.longitude},
                                             users: {email: self.user.email})

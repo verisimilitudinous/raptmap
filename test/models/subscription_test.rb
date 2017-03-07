@@ -43,6 +43,14 @@ class SubscriptionTest < ActiveSupport::TestCase
     assert next_sub.valid?
   end
 
+  test "user may add a new subscription at same location and topic even after an unsubscribe" do
+    @subscription.save
+    attrs = @attrs.clone
+    @subscription.safely_destroy
+    next_sub = Subscription.new(attrs)
+    assert next_sub.valid?
+  end
+
   test "locations should be unique per user" do
     @subscription.save
     attrs = @attrs.clone
