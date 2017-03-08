@@ -2,12 +2,26 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 
+// FormGuide displays a tally of the user's current selections.
+
+// See ../ForwWidget.jsx for an explanation of mapStateToProps,
+// mapDispatchToProps, and the connect() function that appears
+// at bottom.
+
 const mapStateToProps = function(store) {
   return store
 }
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
+    // Each form field corresponds to a step.
+    // TopicForm = 1
+    // LocationForm = 2
+    // RadiusForm = 3
+    // ConfirmationForm = 4
+    // handleLinks() changes the 'step' in the store, which triggers
+    // a redraw of FormWidget to show the selected form.
+    // See ../FormWidget.jsx for more.
     handleLinks: function(step) {
       dispatch({
         type: 'CHANGE_STEP',
@@ -17,8 +31,11 @@ const mapDispatchToProps = function(dispatch, ownProps) {
   }
 }
 
+// When a field's form is active, it should display differently.
+// In that case, add "activated" to the active element's class.
 function setMenuFieldClass(realStep, fieldStep) {
   const gridClass = "widget-menu-item";
+  // If this field's step matches the store's step, activate it.
   return ((realStep == fieldStep) ? (gridClass + " activated") : gridClass);
 }
 
@@ -28,12 +45,19 @@ class FormGuide extends React.Component {
     this.composeMenu = this.composeMenu.bind(this);
   }
 
+  // Build up the menu from current state.
   composeMenu() {
+    // Determine the topic field's class per setMenuFieldClass().
     let topicMenuClass = setMenuFieldClass(this.props.step, 1);
+    // Determine the text label for the topic field.
     let topicMenuText = (this.props.topic.name ? this.props.topic.name : "Topic");
+    // Determine whether or not the topic field should be linkable.
+    // We don't want this to be a link if the topic field is already
+    // displayed (i.e., if the 'step' is already 1).
     let topicMenuPlug = (this.props.step == 1) ?
       (topicMenuText) :
       (<a href="#" onClick={() => this.props.handleLinks(1)}>{topicMenuText}</a>);
+    // Construct the topic field element from the above pieces.
     let topicMenuElement = (
       <li className={topicMenuClass}>
         <img src="/images/heart.svg"/>
@@ -78,6 +102,7 @@ class FormGuide extends React.Component {
     );
 
     return (
+      // Compose the above field elements into the full menu.
       <ul className="widget-menu">
         {topicMenuElement}
         {locationMenuElement}

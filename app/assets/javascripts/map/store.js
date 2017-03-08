@@ -49,9 +49,9 @@ const reducer = function(state, action) {
     });
   };
 
-  // Respond to the "action" dispatched to the store based upon the action's type.
-  // See the store.dispatch() code in ./snapMap.js for a straight-forward example
-  // of what gets submitted in an action.
+  // Here we respond to the "action" dispatched to the store based upon the action's type.
+  // See the store.dispatch() code in ./snapMap.js for a straight-forward example of what
+  // gets submitted in an action.
   // There's a great summary of Redux actions here:
   // http://redux.js.org/docs/basics/Actions.html
   // I don't like the way this is currently configured. IMO the action types should

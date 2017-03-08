@@ -4,11 +4,8 @@
  * @author Lea Verou http://leaverou.github.io/awesomplete
  * MIT license
 
-
  	MONKEY PATCHED BY JON AT #315: if (typeof data === "object") { this.data = data };
-
-
- */
+**/
 
 (function () {
 

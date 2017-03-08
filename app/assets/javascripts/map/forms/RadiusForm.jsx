@@ -2,10 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 
+// See ../ForwWidget.jsx for an explanation of mapStateToProps,
+// mapDispatchToProps, and the connect() function that appears
+// at bottom.
+
 const mapStateToProps = function(store) {
   return store.radius
 };
 
+// Converts to meters based on the given values.
+// I'm sure there's a library out there that's more elegant.
 function convertToMeters(length, units) {
   switch (units) {
   case "km":
@@ -19,8 +25,14 @@ function convertToMeters(length, units) {
   };
 };
 
+
 const mapDispatchToProps = function(dispatch, ownProps) {
+  // This is kind of a disaster and highlights why it would be better to
+  // write more specific reducers for Redux in ../store.js. I don't like
+  // having to resubmit the entire 'radius' store object every time there's
+  // a little change.
   return {
+    // Commits values to the store when a user submits the form.
     commitValues: function(length, units) {
       dispatch({
         type: 'CHANGE_RADIUS',
@@ -29,9 +41,12 @@ const mapDispatchToProps = function(dispatch, ownProps) {
           units: units,
           in_meters: convertToMeters(length, units),
         },
+        // User is done with the radius, so we're onto the ConfirmationForm.
+        // That's 4.
         step: 4
       })
     },
+    // Toggles the field's warning in case a validation has failed.
     toggleWarning: function(boolean, length, units) {
       dispatch({
         type: 'CHANGE_RADIUS',
@@ -42,6 +57,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         }
       })
     },
+    // Changes the radius length.
     changeLength: function(length, units) {
       dispatch({
         type: 'CHANGE_RADIUS',
@@ -52,6 +68,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         }
       })
     },
+    // Changes the radius unit type.
     changeUnits: function(units, length) {
       dispatch({
         type: 'CHANGE_RADIUS',
@@ -64,6 +81,10 @@ const mapDispatchToProps = function(dispatch, ownProps) {
   };
 };
 
+// Our React component. Mostly self-explanatory to React folks.
+// Note how the handleLengthChange(), handleUnitsChange(), and
+// handleSubmit() functions map to the Redux dispatch functions
+// defined above in mapDispatchToProps().
 class RadiusForm extends React.Component {
   constructor(props) {
     super(props);

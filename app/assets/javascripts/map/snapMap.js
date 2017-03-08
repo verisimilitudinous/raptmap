@@ -1,6 +1,8 @@
 import store from './store.js'
 import readyApp from './readyApp.jsx'
 
+// This is where we set up the Leaflet map.
+
 function readyMap() {
   var map;
 
@@ -9,6 +11,7 @@ function readyMap() {
   if (mapspot instanceof Element) {
 
     // Uses Leaflet to initialize the map.
+    // We'll add Controls later, but this is where we start.
     // Basic overview available here:
     // http://leafletjs.com/examples/quick-start/
     map = L.map('map', {zoomControl: false}).setView([38.1341, -121.2722], 13);
