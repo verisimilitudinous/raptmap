@@ -51,7 +51,7 @@ en:
       unsubscribe_html: "Enter your email address below. We'll send you an email with details on all your current subscriptions, including unsubscribe links for each."
       email_label: "Email address:"
       submit_label: "Send unsubscribe email"
-    submit:
+    sent:
       heading: "Almost Unsubscribed"
       summary_html: "Check your email for further instructions."
   subscription_mailer:

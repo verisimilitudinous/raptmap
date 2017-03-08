@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
     get '/unsubscribe', to: 'cancellations#new'
     post '/unsubscribe', to: 'cancellations#submit'
+    get '/unsubscribing', to: 'cancellations#sent'
     get '/unsubscribe/:unsubscribe_uid', to: 'cancellations#destroy', as: 'unsubscriber'
 
     get '/about', to: 'static_pages#about'

@@ -27,5 +27,3 @@ yarn-error.log
 
 # Ignore the generated SSL keys.
 /config/containers/nginx/ssl/*
-
-

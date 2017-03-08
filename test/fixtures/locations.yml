@@ -1,25 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   radius_length_in_meters: 6000
   radius_length: 6
   radius_units: "km"
   latitude: 37.51377
   longitude: -121.944821
   name: "Fremont, CA, USA"
+  active: true
 
 two:
+  id: 2
   radius_length_in_meters: 5000
   radius_length: 5
   radius_units: "km"
   latitude: 37.59577
   longitude: -122.01913
   name: "Union City, CA, USA"
+  active: true
 
 three:
+  id: 3
   radius_length_in_meters: 6000
   radius_length: 5
   radius_units: "km"
   latitude: 37.520012
   longitude: -122.03178
   name: "Newark, CA, USA"
+  active: true
