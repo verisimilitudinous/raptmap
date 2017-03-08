@@ -7,7 +7,7 @@ class SubscriptionTest < ActiveSupport::TestCase
   def setup
     @attrs = {
       user_attributes: {
-        email: "user1@example.com"
+        email: "test4@id.xjensen.com"
       },
       topic_attributes: {
         name: "Tichu"
@@ -54,7 +54,7 @@ class SubscriptionTest < ActiveSupport::TestCase
   test "locations should be unique per user" do
     @subscription.save
     attrs = @attrs.clone
-    attrs[:user_attributes][:email] = "user2@example.com"
+    attrs[:user_attributes][:email] = "test5@id.xjensen.com"
     next_sub = Subscription.new(attrs)
     next_sub.save
     assert_not_equal @subscription.location.id, next_sub.location.id
@@ -63,7 +63,7 @@ class SubscriptionTest < ActiveSupport::TestCase
   test "should associate existing topics" do
     @subscription.save
     attrs = @attrs.clone
-    attrs[:user_attributes][:email] = "user2@example.com"
+    attrs[:user_attributes][:email] = "test5@id.xjensen.com"
     attrs[:location_attributes][:name] = "Lodi, CA, USA"
     attrs[:location_attributes][:latitude] = nil
     attrs[:location_attributes][:longitude] = nil
