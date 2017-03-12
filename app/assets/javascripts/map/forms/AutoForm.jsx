@@ -21,7 +21,7 @@ const autoDispatchersByModel = function(dispatch, model) {
   return {
     // changeValue() is our first dispatch function. It will get triggered
     // whenever the user types a new value into the form field.
-    changeValue: function(value) {
+    changeValue: function(value, counter) {
       // We're going to take the dispatches object above and add a new
       // object within, keyed to the supplied model.
       dispatches[model] = {
@@ -33,6 +33,8 @@ const autoDispatchersByModel = function(dispatch, model) {
           // The user has input a new value, so any selections should be
           // voided.
           selected: null,
+          // Increment the counter.
+          value_counter: counter,
           // Erase any warnings pending the next submission.
           warn: false
         }
@@ -52,10 +54,11 @@ const autoDispatchersByModel = function(dispatch, model) {
     },
     // populateSuggestions() will be triggered whenever an auto-complete
     // response comes back from the server with a list of suggestions.
-    populateSuggestions: function(suggestions) {
+    populateSuggestions: function(suggestions, counter) {
       dispatches[model] = {
         live: {
-          suggestions: suggestions
+          suggestions: suggestions,
+          suggestions_counter: counter
         }
       }
       dispatch(dispatches);
@@ -136,7 +139,7 @@ class AutoForm extends React.Component {
   // See handleChange() in autoDispatchersByModel() above.
   handleChange(event, { newValue, method }) {
     if (this.props.value !== newValue) {
-      this.props.changeValue(newValue);
+      this.props.changeValue(newValue, (this.props.value_counter + 1));
     }
   }
 
@@ -161,19 +164,25 @@ class AutoForm extends React.Component {
   // Sorts the suggestions for relevance as they arrive from the server.
   onSuggestionsFetchRequested({ value }) {
     if (this.props.value !== value) {
+      // The current counter of the value. We'll use this to track
+      // sequence of auto-complete requests.
+      const counter = this.props.value_counter + 1;
       // Escape the weird characters...
       const escapedValue = escapeRegexCharacters(value.trim());
       // ...then create the regex.
       const regex = new RegExp('^' + escapedValue, 'i');
-      getRemoteList((this.props.url + escapedValue), (data) => {
-        // Filter the suggestions based upon the regex defined above.
-        // We only want to include suggestions that match 'regex' for
-        // the purposes of auto-complete.
-        const suggestions = data.filter(topic => regex.test(topic.name));
-        if (this.props.suggestions !== suggestions) {
-          // Populates the auto-completer's suggestions.
-          // See populateSuggestions() in autoDispatchersByModel() above.
-          this.props.populateSuggestions(suggestions);
+      getRemoteList((this.props.url + "?query=" + escapedValue + "&counter=" + counter), (data) => {
+        // Only populate the suggestions if this is the latest response.
+        if (data.counter > (this.props.suggestions_counter)) {
+          // Filter the suggestions based upon the regex defined above.
+          // We only want to include suggestions that match 'regex' for
+          // the purposes of auto-complete.
+          const suggestions = data.contents.filter(topic => regex.test(topic.name));
+          if (this.props.suggestions !== suggestions) {
+            // Populates the auto-completer's suggestions.
+            // See populateSuggestions() in autoDispatchersByModel() above.
+            this.props.populateSuggestions(suggestions, data.counter);
+          }
         }
       });
     }
@@ -210,7 +219,6 @@ class AutoForm extends React.Component {
             onSuggestionSelected={this.onSuggestionSelected}
             inputProps={inputProps} />
         </div>
-        <button className="pure-button pure-button-primary" type="submit">Submit</button>
       </form>
     );
   }

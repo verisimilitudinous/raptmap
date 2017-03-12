@@ -1,45 +1,52 @@
-@import "pure-min";
-@import "grids-responsive-min";
+.hidden {
+  display: none;
+}
 
-html, body, #map {
-  width:100%;
-  height:100%;
-  margin: 0;
+pre.debug_dump {
+  display:none;
+}
+
+body {
+  margin: 1vh 1vw;
 }
 
 #map {
-
-  .content-blok {
-    margin: 0;
-    background: white;
-    padding: .5em;
-  }
-
-  .footer {
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      display: inline;
-      margin: 0 .5em 0 0;
-    }
-
-    small {
-      display: none;
-    }
-  }
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  margin: 0;
 }
 
+.content-blok {
+  margin: 5vh 0 0 0;
+}
+
+p.field-prompt {
+  margin: 1vh 0;
+  font-size: 3vh;
+}
+
+
+
+.leaflet-bar-part-single {
+  padding-top: 8px
+}
+
+.leaflet-control-slider a {
+  color: black
+}
+
+
 header h1 {
+  font-size: 6vh;
   margin: 0;
   float: left;
 }
 
 header p {
+  font-size: 3vh;
   margin: 0;
   clear: both;
 }
@@ -71,7 +78,7 @@ div.field {
 
 .react-autosuggest__container {
   position: relative;
-  float: left;
+  /* float: left; */
 }
 
 button {
@@ -132,56 +139,4 @@ button {
 
 .react-autosuggest__suggestion--focused {
   background-color: #ddd;
-}
-
-.widget-menu {
-
-}
-
-.widget-menu img {
-  position: absolute;
-  top: .6em;
-  height: 1em;
-}
-
-ul.widget-menu {
-  border-bottom: .1em gray solid;
-  list-style: none;
-  padding: 0;
-  margin: 0; }
-
-li.widget-menu-item {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 10em;
-  padding: 0 .5em 0 0;
-  height: 1.1em; }
-
-li.widget-menu-item.activated {
-  color: red; }
-
-li.widget-menu-item span {
-  height: 1.5em;
-  font-size: 1em;
-  padding: 0 .3em 0 1.25em;
-  margin: 0; }
-
-  .react-form {
-    font-size: 1.2em;
-    width: 30em;
-     }
-
-     .leaflet-top {
-       z-index: 10000;
-     }
-
-.field, .auto-field {
-  margin:0;
-}
-
-p.field-prompt {
-  margin: .3em 0 .2em .3em;
-  padding: 0;
 }

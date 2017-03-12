@@ -116,11 +116,20 @@ class Location < ApplicationRecord
     end
   end
 
-  def self.by_ip(ip)
+  def self.by_ip(ip, locale)
     res = RestClient.get "http://geolocation:8080/json/#{ip}", { accept: :json }
     parsed = JSON.parse(res.body)
     unless parsed["latitude"].zero? and parsed["longitude"].zero?
       return { latitude: parsed["latitude"], longitude: parsed["longitude"]}
+    else
+      # If geolocation fails, return defaults.
+      if locale == :en
+        # CA state capitol for English.
+        return { latitude: 38.576696, longitude: -121.493256 }
+      elsif locale == :ja
+        # Ueno Park for Japanese.
+        return { latitude: 35.716409, longitude: 139.774783 }
+      end
     end
   end
 

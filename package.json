@@ -12,6 +12,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "imports-loader": "^0.7.0",
     "leaflet": "^1.0.3",
+    "leaflet.locatecontrol": "^0.60.0",
     "lodash": "^4.17.4",
     "node-sass": "^4.5.0",
     "ramda-loader": "^0.4.1",

@@ -13,7 +13,7 @@ class SubscriptionsController < ApplicationController
     else
       Location.new
     end
-    @location.geolocate_by_ip(request.remote_ip)
+    gon.default_coordinates = Location.by_ip(request.remote_ip, I18n.locale)
   end
 
   def results
@@ -75,14 +75,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def test_ip
-    @location = Location.new
-    @location.geolocate_by_ip("1.2.3.4")
-    render text: (@location.latitude.to_s + "::" + @location.longitude.to_s)
-  end
-
-  def map_test
-    @subscription = Subscription.new
-    render layout: "full_screen_map"
+    location = Location.by_ip(request.remote_ip, I18n.locale)
+    render text: (location[:latitude].to_s + "," + location[:longitude].to_s)
   end
 
   private

@@ -5,7 +5,7 @@ import { AutoForm, autoDispatchersByModel } from './AutoForm.jsx'
 // LocationForm is a form field that allows the user to change
 // the map's location by typing it in. Yay, geolocation!
 
-// See ../ForwWidget.jsx for an explanation of mapStateToProps,
+// See ./TopicForm.jsx for an explanation of mapStateToProps,
 // mapDispatchToProps, and the connect() function that appears
 // at bottom.
 
@@ -30,10 +30,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         // it has been revealed to the user.
         radius: {
           revealed: true
-        },
-        // User is done with location, so we display the RadiusForm.
-        // That's step 3.
-        step: 3
+        }
       })
     }
   }, autoDispatchersByModel(dispatch, "location"))
@@ -46,9 +43,9 @@ function LocationForm(props) {
   return (
     <div className="location-form">
       <p className="field-prompt">
-        Find fellow enthusiasts near:
+        <span className="icon-map"></span> Find fellow enthusiasts near:
       </p>
-      <AutoForm url='/locations/autocomplete?query='
+      <AutoForm url='/locations/autocomplete'
                 warning="Please add a location"
                 placeholder="e.g., Fremont, CA, USA"
                 {...props} />

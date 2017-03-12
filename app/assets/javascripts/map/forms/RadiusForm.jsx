@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { connect } from 'react-redux';
 
-// See ../ForwWidget.jsx for an explanation of mapStateToProps,
+// See ./TopicForm.jsx for an explanation of mapStateToProps,
 // mapDispatchToProps, and the connect() function that appears
 // at bottom.
 
@@ -40,10 +40,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
           length: length,
           units: units,
           in_meters: convertToMeters(length, units),
-        },
-        // User is done with the radius, so we're onto the ConfirmationForm.
-        // That's 4.
-        step: 4
+        }
       })
     },
     // Toggles the field's warning in case a validation has failed.
@@ -126,7 +123,6 @@ class RadiusForm extends React.Component {
               <option value="ft">{(this.props.length == 1) ? "foot" : "feet"}</option>
             </select>
           </div>
-          <button className="pure-button pure-button-primary" type="submit">Submit</button>
         </form>
       </div>
     )

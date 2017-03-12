@@ -18,34 +18,32 @@ const reducer = function(state, action) {
     state = Immutable({
       topic: {
         name: "",
-        revealed: true,
         live: {
           value: "",
           selected: null,
           suggestions: [],
-          warn: false
+          warn: false,
+          value_counter: 0,
+          suggestions_counter: 0
         }
       },
       location: {
         name: "",
         latitude: null,
         longitude: null,
-        revealed: false,
         live: {
           value: "",
           selected: null,
           suggestions: [],
-          warn: false
+          warn: false,
+          value_counter: 0,
+          suggestions_counter: 0
         }
       },
       radius: {
-        length: 3,
-        units: "km",
-        in_meters: 3000,
-        revealed: false,
+        length: 5000,
         warn: false
-      },
-      step: 1
+      }
     });
   };
 

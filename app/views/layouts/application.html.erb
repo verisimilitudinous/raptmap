@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
-    <link rel="stylesheet" href="/stylesheets/<%= fingerprinted_asset('application') %>.css" />
-    <script src="/javascripts/<%= fingerprinted_asset('application') %>.js"></script>
+    <%= Gon::Base.render_data %>
+    <%= asset_handler %>
     <meta property="og:url" content="<%= request.original_url %>" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="<%= full_title(yield(:title)) %>" />
