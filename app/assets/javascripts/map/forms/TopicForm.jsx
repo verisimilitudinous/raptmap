@@ -45,7 +45,7 @@ function TopicForm(props) {
   return (
     <div className="topic-form">
       <p className="field-prompt">
-        <span className="icon-heart"></span> Find people interested in:
+        <span className="icon-heart"></span> {gon.topic_label}
       </p>
       <AutoForm url='/topics/autocomplete'
                 placeholder="e.g., Basketball, Knitting, Mah Jong, etc."

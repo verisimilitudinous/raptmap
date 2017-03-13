@@ -93,6 +93,7 @@ en:
       location_placeholder: "e.g., Fremont, CA, USA"
       radius_label: "Find them within:"
       radius_length_placeholder: "e.g., 5"
+      map_label: "Find them within the circle on the map:"
       submit_label: "Join the conversation"
     show:
       title: "%{topic_name} near %{location_name}"

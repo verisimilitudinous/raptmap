@@ -14,7 +14,7 @@ body {
   position: absolute;
   top:0;
   right: 0;
-  width: 50%;
+  width: 60%;
   height: 100%;
   margin: 0;
 }
@@ -26,16 +26,6 @@ body {
 p.field-prompt {
   margin: 1vh 0;
   font-size: 3vh;
-}
-
-
-
-.leaflet-bar-part-single {
-  padding-top: 8px
-}
-
-.leaflet-control-slider a {
-  color: black
 }
 
 
@@ -90,41 +80,36 @@ button {
 }
 
 .react-autosuggest__input {
-  width: 23.3em;
-  height: 2em;
-  padding: 0 .5em;
-  font-size: 1em;
+  width: 35vw;
+  height: 7vh;
+  padding: 0 1vw;
+  font-size: 3vh;
   font-family: serif;
-  border: 1px solid #aaa;
-  border-radius: .3em;
-}
+  border: .1vh solid #aaa;
+  border-radius: 1vh; }
 
 .react-autosuggest__input:focus {
-  outline: none;
-}
+  outline: none; }
 
 .react-autosuggest__container--open .react-autosuggest__input {
   border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
+  border-bottom-right-radius: 0; }
 
 .react-autosuggest__suggestions-container {
-  display: none;
-}
+  display: none; }
 
 .react-autosuggest__container--open .react-autosuggest__suggestions-container {
   display: block;
   position: absolute;
-  top: 2em;
-  width: 23.3em;
-  font-size: 1em;
+  top: 7.2vh;
+  width: 37vw; /* Should always be 2vh higher than .react-autosuggest__input */
+  font-size: 3vh;
   font-family: serif;
-  border: 1px solid #aaa;
+  border: .1vh solid #aaa;
   background-color: #fff;
-  border-bottom-left-radius: .3em;
-  border-bottom-right-radius: .3em;
-  z-index: 2;
-}
+  border-bottom-left-radius: 1vh;
+  border-bottom-right-radius: 1vh;
+  z-index: 2; }
 
 .react-autosuggest__suggestions-list {
   margin: 0;
@@ -134,9 +119,37 @@ button {
 
 .react-autosuggest__suggestion {
   cursor: pointer;
-  padding: .5em;
+  padding: 2vh 1vw;;
 }
 
 .react-autosuggest__suggestion--focused {
   background-color: #ddd;
+}
+
+.leaflet-bar-part-single {
+  height: 36px !important;
+  width: 36px !important;
+  line-height: 36px !important;
+  padding-top: 12px;
+  span.icon-crosshairs, span.icon-clock-o {
+    font-size: 26px;
+  }
+}
+
+.leaflet-control-slider a {
+  color: black
+}
+
+.leaflet-control-slider-plus, .leaflet-control-slider-minus {
+  font-family: icomoon;
+  cursor: pointer;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  font-family: icomoon;
+  font-weight: normal;
+  font-size: 22px !important;
+  height: 36px !important;
+  width: 36px !important;
+  line-height: 36px !important
 }

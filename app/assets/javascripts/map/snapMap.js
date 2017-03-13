@@ -30,7 +30,9 @@ function readyMap() {
     var zoomControl = L.control.zoom({
       position: 'bottomright',
       zoomInTitle: 'Zoom in.',
-      zoomOutTitle: 'Zoom out.'
+      zoomOutTitle: 'Zoom out.',
+      zoomInText: '&#xf00e;',
+      zoomOutText: '&#xf010;'
     });
     map.addControl(zoomControl);
 
@@ -47,6 +49,7 @@ function readyMap() {
         }
       });
     }, {
+      size: '200px',
       min: 100,
       max: 50000,
       value: initial_radius,
@@ -57,6 +60,8 @@ function readyMap() {
       getValue: function(value) { return (value/1000).toFixed(1) },
       syncSlider: true,
       increment: true,
+      incrementUp: '&#xf065;',
+      incrementDown: '&#xf066;',
       title: "Set my coverage area."
     });
     map.addControl(radiusSlider);

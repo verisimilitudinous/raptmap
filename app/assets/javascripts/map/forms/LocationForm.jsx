@@ -43,12 +43,9 @@ function LocationForm(props) {
   return (
     <div className="location-form">
       <p className="field-prompt">
-        <span className="icon-map"></span> Find fellow enthusiasts near:
+        <span className="icon-map"></span>
+        {gon.map_label}
       </p>
-      <AutoForm url='/locations/autocomplete'
-                warning="Please add a location"
-                placeholder="e.g., Fremont, CA, USA"
-                {...props} />
     </div>
   );
 };

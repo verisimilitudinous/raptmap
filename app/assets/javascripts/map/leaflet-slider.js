@@ -1,5 +1,8 @@
 import L from 'leaflet'
 
+// Based on https://github.com/Eclipse1979/leaflet-slider
+// Made a few additions, notably incrementUp and incrementDown.
+
 L.Control.Slider = L.Control.extend({
   update: function(value){
     return value;
@@ -18,6 +21,8 @@ L.Control.Slider = L.Control.extend({
     logo: 'S',
     orientation: 'horizontal',
     increment: false,
+    incrementUp: '+',
+    incrementDown: '-',
     getValue: function(value) {
       return value;
     },
@@ -68,7 +73,7 @@ L.Control.Slider = L.Control.extend({
 
     if(this.options.increment) {
       this._plus = L.DomUtil.create('a', className + '-plus', this._container);
-      this._plus.innerHTML = "+";
+      this._plus.innerHTML = this.options.incrementUp;
       L.DomEvent.on(this._plus, 'click', this._increment, this);
       L.DomUtil.addClass(this._container, 'leaflet-control-slider-incdec');
     }
@@ -95,7 +100,7 @@ L.Control.Slider = L.Control.extend({
 
     if(this.options.increment) {
       this._minus = L.DomUtil.create('a', className + '-minus', this._container);
-      this._minus.innerHTML = "-";
+      this._minus.innerHTML = this.options.incrementDown;
       L.DomEvent.on(this._minus, 'click', this._decrement, this);
     }
 

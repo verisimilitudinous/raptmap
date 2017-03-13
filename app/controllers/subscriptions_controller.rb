@@ -14,6 +14,8 @@ class SubscriptionsController < ApplicationController
       Location.new
     end
     gon.default_coordinates = Location.by_ip(request.remote_ip, I18n.locale)
+    gon.topic_label = t('subscriptions.search.topic_label')
+    gon.map_label = t('subscriptions.search.map_label')
   end
 
   def results

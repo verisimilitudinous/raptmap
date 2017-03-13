@@ -2336,7 +2336,9 @@
 	      zoomControl = _leaflet2.default.control.zoom({
 	        position: 'bottomright',
 	        zoomInTitle: 'Zoom in.',
-	        zoomOutTitle: 'Zoom out.'
+	        zoomOutTitle: 'Zoom out.',
+	        zoomInText: '&#xf00e;',
+	        zoomOutText: '&#xf010;'
 	      });
 
 	      map.addControl(zoomControl);
@@ -2354,6 +2356,7 @@
 	          }
 	        });
 	      }, {
+	        size: '200px',
 	        min: 100,
 	        max: 50000,
 	        value: initial_radius,
@@ -2366,6 +2369,8 @@
 	        },
 	        syncSlider: true,
 	        increment: true,
+	        incrementUp: '&#xf065;',
+	        incrementDown: '&#xf066;',
 	        title: "Set my coverage area."
 	      });
 
@@ -17942,6 +17947,9 @@
 	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
+	// Based on https://github.com/Eclipse1979/leaflet-slider
+	// Made a few additions, notably incrementUp and incrementDown.
+
 	_leaflet2.default.Control.Slider = _leaflet2.default.Control.extend({
 	  update: function update(value) {
 	    return value;
@@ -17960,6 +17968,8 @@
 	    logo: 'S',
 	    orientation: 'horizontal',
 	    increment: false,
+	    incrementUp: '+',
+	    incrementDown: '-',
 	    getValue: function getValue(value) {
 	      return value;
 	    },
@@ -18010,7 +18020,7 @@
 
 	    if (this.options.increment) {
 	      this._plus = _leaflet2.default.DomUtil.create('a', className + '-plus', this._container);
-	      this._plus.innerHTML = "+";
+	      this._plus.innerHTML = this.options.incrementUp;
 	      _leaflet2.default.DomEvent.on(this._plus, 'click', this._increment, this);
 	      _leaflet2.default.DomUtil.addClass(this._container, 'leaflet-control-slider-incdec');
 	    }
@@ -18039,7 +18049,7 @@
 
 	    if (this.options.increment) {
 	      this._minus = _leaflet2.default.DomUtil.create('a', className + '-minus', this._container);
-	      this._minus.innerHTML = "-";
+	      this._minus.innerHTML = this.options.incrementDown;
 	      _leaflet2.default.DomEvent.on(this._minus, 'click', this._decrement, this);
 	    }
 
@@ -40680,7 +40690,8 @@
 	      'p',
 	      { className: 'field-prompt' },
 	      _react2.default.createElement('span', { className: 'icon-heart' }),
-	      ' Find people interested in:'
+	      ' ',
+	      gon.topic_label
 	    ),
 	    _react2.default.createElement(_AutoForm.AutoForm, _extends({ url: '/topics/autocomplete',
 	      placeholder: 'e.g., Basketball, Knitting, Mah Jong, etc.',
@@ -42820,8 +42831,6 @@
 	  value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _react = __webpack_require__(154);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -42877,12 +42886,8 @@
 	      'p',
 	      { className: 'field-prompt' },
 	      _react2.default.createElement('span', { className: 'icon-map' }),
-	      ' Find fellow enthusiasts near:'
-	    ),
-	    _react2.default.createElement(_AutoForm.AutoForm, _extends({ url: '/locations/autocomplete',
-	      warning: 'Please add a location',
-	      placeholder: 'e.g., Fremont, CA, USA'
-	    }, props))
+	      gon.map_label
+	    )
 	  );
 	};
 

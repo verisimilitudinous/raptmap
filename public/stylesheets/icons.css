@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?t6ehui');
-  src:  url('fonts/icomoon.eot?t6ehui#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?t6ehui') format('truetype'),
-    url('fonts/icomoon.woff?t6ehui') format('woff'),
-    url('fonts/icomoon.svg?t6ehui#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?13x74c');
+  src:  url('fonts/icomoon.eot?13x74c#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?13x74c') format('truetype'),
+    url('fonts/icomoon.woff?13x74c') format('woff'),
+    url('fonts/icomoon.svg?13x74c#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,11 +24,41 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-search:before {
+  content: "\f002";
+}
+.icon-search-plus:before {
+  content: "\f00e";
+}
+.icon-search-minus:before {
+  content: "\f010";
+}
 .icon-clock-o:before {
   content: "\f017";
 }
+.icon-map-marker:before {
+  content: "\f041";
+}
 .icon-crosshairs:before {
   content: "\f05b";
+}
+.icon-arrow-left:before {
+  content: "\f060";
+}
+.icon-arrow-right:before {
+  content: "\f061";
+}
+.icon-arrow-up:before {
+  content: "\f062";
+}
+.icon-arrow-down:before {
+  content: "\f063";
+}
+.icon-expand:before {
+  content: "\f065";
+}
+.icon-compress:before {
+  content: "\f066";
 }
 .icon-facebook-square:before {
   content: "\f082";
@@ -45,6 +75,9 @@
 .icon-tumblr-square:before {
   content: "\f174";
 }
+.icon-safari:before {
+  content: "\f267";
+}
 .icon-map:before {
   content: "\f279";
 }
@@ -56,8 +89,5 @@
 }
 .icon-envelope:before {
   content: "\e902";
-}
-.icon-map-marker:before {
-  content: "\e903";
 }
 
