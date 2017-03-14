@@ -17,24 +17,28 @@ const reducer = function(state, action) {
     // https://github.com/rtfeldman/seamless-immutable
     state = Immutable({
       topic: {
-        value: "",
+        value: (gon.topic.name || ""),
         selected: null,
         suggestions: [],
         warn: false
       },
       location: {
-        latitude: (gon.default_coordinates.latitude || null),
-        longitude: (gon.default_coordinates.longitude || null),
+        latitude: (gon.location.latitude || null),
+        longitude: (gon.location.longitude || null),
         warn: false
       },
       radius: {
-        length: 5000,
+        length: (gon.radius.length || 5000),
         warn: false
       },
       user: {
-        email: "",
+        email: (gon.user.email || ""),
         warn: false
-      }
+      },
+      // For disabling edits in specific circumstances.
+      input_enabled: (gon.editable || true),
+      // Tells the map when to initialize itself.
+      map_ready: false
     });
   };
 
@@ -83,6 +87,10 @@ const reducer = function(state, action) {
       user: {
         email: action.email
       }
+    });
+  case 'READY_MAP':
+    return Immutable.merge(state, {
+      map_ready: action.map_ready
     });
   }
   return state;

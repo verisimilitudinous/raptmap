@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(134);
-	module.exports = __webpack_require__(363);
+	module.exports = __webpack_require__(364);
 
 
 /***/ },
@@ -2270,11 +2270,11 @@
 
 	var _searchForm2 = _interopRequireDefault(_searchForm);
 
-	var _store = __webpack_require__(357);
+	var _store = __webpack_require__(358);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _snapMap = __webpack_require__(359);
+	var _snapMap = __webpack_require__(360);
 
 	var _snapMap2 = _interopRequireDefault(_snapMap);
 
@@ -25568,15 +25568,15 @@
 
 	var _TopicInput2 = _interopRequireDefault(_TopicInput);
 
-	var _LocationInput = __webpack_require__(364);
+	var _LocationInput = __webpack_require__(356);
 
 	var _LocationInput2 = _interopRequireDefault(_LocationInput);
 
-	var _UserInput = __webpack_require__(356);
+	var _UserInput = __webpack_require__(357);
 
 	var _UserInput2 = _interopRequireDefault(_UserInput);
 
-	var _store = __webpack_require__(357);
+	var _store = __webpack_require__(358);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -25597,7 +25597,14 @@
 	};
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	  return {};
+	  return {
+	    readyMap: function readyMap() {
+	      dispatch({
+	        type: 'READY_MAP',
+	        map_ready: true
+	      });
+	    }
+	  };
 	};
 
 	var SearchForm = function (_React$Component) {
@@ -25613,6 +25620,11 @@
 	  }
 
 	  _createClass(SearchForm, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.props.readyMap();
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
 	      if (this.props.topic.value !== '' && this.props.user.email !== '') {
@@ -25703,7 +25715,7 @@
 	// at bottom. Also:
 	// http://redux.js.org/docs/basics/UsageWithReact.html#implementing-container-components
 	var mapStateToProps = function mapStateToProps(store) {
-	  return store.topic;
+	  return Object.assign({ input_enabled: store.input_enabled }, store.topic);
 	};
 
 	// Likewise, mapStateToProps is also used by react-redux's connect()
@@ -26006,6 +26018,9 @@
 	        value: this.props.value,
 	        onChange: this.handleChange,
 	        name: this.props.inputName
+	      };
+	      if (this.props.input_enabled !== true) {
+	        inputProps['disabled'] = 'disabled';
 	      };
 
 	      // Here comes the excitement. Pass all the stuff above into
@@ -27856,6 +27871,64 @@
 	  value: true
 	});
 
+	var _react = __webpack_require__(136);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(166);
+
+	var _reactRedux = __webpack_require__(312);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var mapStateToProps = function mapStateToProps(store) {
+	  return store;
+	};
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+	  return {};
+	};
+
+	// LocationForm is just a sign that points to the map.
+	function LocationInput(props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'content-blok location-input' },
+	    _react2.default.createElement(
+	      'h2',
+	      null,
+	      _react2.default.createElement('span', { className: 'icon-map' }),
+	      ' ',
+	      gon.map_heading
+	    ),
+	    _react2.default.createElement(
+	      'p',
+	      { className: 'field-prompt' },
+	      gon.map_label,
+	      ' ',
+	      _react2.default.createElement('span', { className: 'icon-arrow-right' })
+	    ),
+	    _react2.default.createElement('input', { type: 'hidden', name: 'location[latitude]', value: props.location.latitude }),
+	    _react2.default.createElement('input', { type: 'hidden', name: 'location[longitude]', value: props.location.longitude }),
+	    _react2.default.createElement('input', { type: 'hidden', name: 'location[radius_length]', value: props.radius.length }),
+	    _react2.default.createElement('input', { type: 'hidden', name: 'location[radius_units]', value: 'm' })
+	  );
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LocationInput);
+
+/***/ },
+/* 357 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(136);
@@ -27879,7 +27952,7 @@
 	// at bottom.
 
 	var mapStateToProps = function mapStateToProps(store) {
-	  return store.user;
+	  return Object.assign({ input_enabled: store.input_enabled }, store.user);
 	};
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
@@ -27919,6 +27992,10 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var opts = {};
+	      if (this.props.input_enabled !== true) {
+	        opts['disabled'] = 'disabled';
+	      };
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'content-blok user-input' },
@@ -27937,10 +28014,11 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: this.props.warn ? 'field warn' : 'field' },
-	          _react2.default.createElement('input', { type: 'text',
+	          _react2.default.createElement('input', _extends({ type: 'text',
 	            name: 'user[email]',
 	            value: this.props.email,
-	            onChange: this.handleChange })
+	            onChange: this.handleChange
+	          }, opts))
 	        )
 	      );
 	    }
@@ -27952,14 +28030,14 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(UserInput);
 
 /***/ },
-/* 357 */
+/* 358 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _redux = __webpack_require__(323);
 
-	var _seamlessImmutable = __webpack_require__(358);
+	var _seamlessImmutable = __webpack_require__(359);
 
 	var _seamlessImmutable2 = _interopRequireDefault(_seamlessImmutable);
 
@@ -27983,24 +28061,28 @@
 	    // https://github.com/rtfeldman/seamless-immutable
 	    state = (0, _seamlessImmutable2.default)({
 	      topic: {
-	        value: "",
+	        value: gon.topic.name || "",
 	        selected: null,
 	        suggestions: [],
 	        warn: false
 	      },
 	      location: {
-	        latitude: gon.default_coordinates.latitude || null,
-	        longitude: gon.default_coordinates.longitude || null,
+	        latitude: gon.location.latitude || null,
+	        longitude: gon.location.longitude || null,
 	        warn: false
 	      },
 	      radius: {
-	        length: 5000,
+	        length: gon.radius.length || 5000,
 	        warn: false
 	      },
 	      user: {
-	        email: "",
+	        email: gon.user.email || "",
 	        warn: false
-	      }
+	      },
+	      // For disabling edits in specific circumstances.
+	      input_enabled: gon.editable || true,
+	      // Tells the map when to initialize itself.
+	      map_ready: false
 	    });
 	  };
 
@@ -28050,6 +28132,10 @@
 	          email: action.email
 	        }
 	      });
+	    case 'READY_MAP':
+	      return _seamlessImmutable2.default.merge(state, {
+	        map_ready: action.map_ready
+	      });
 	  }
 	  return state;
 	};
@@ -28061,7 +28147,7 @@
 	module.exports = store;
 
 /***/ },
-/* 358 */
+/* 359 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;(function() {
@@ -28801,7 +28887,7 @@
 
 
 /***/ },
-/* 359 */
+/* 360 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28810,17 +28896,17 @@
 	  value: true
 	});
 
-	var _store = __webpack_require__(357);
+	var _store = __webpack_require__(358);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _leaflet = __webpack_require__(360);
+	var _leaflet = __webpack_require__(361);
 
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 
-	__webpack_require__(361);
-
 	__webpack_require__(362);
+
+	__webpack_require__(363);
 
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { default: obj };
@@ -28865,9 +28951,12 @@
 	        };
 	      };
 
-	      // Get default coordinates from Rails, which generates a 'gon'
-	      // object with this info.
-	      var default_coordinates = [gon.default_coordinates.latitude, gon.default_coordinates.longitude];
+	      // Dump the initial state from the store.
+	      // We'll use these values to initialize the map.
+	      var initial_dump = _store2.default.getState();
+
+	      // Get the initial latitude and longitude for the map.
+	      var default_coordinates = [initial_dump.location.latitude, initial_dump.location.longitude];
 
 	      // Uses Leaflet to initialize the map.
 	      // We'll add Controls later, but this is where we start.
@@ -28891,7 +28980,7 @@
 	      map.addControl(zoomControl);
 
 	      // Get the initial radius from the store.
-	      var initial_radius = _store2.default.getState().radius.length;
+	      var initial_radius = initial_dump.radius.length;
 
 	      // Add the slider to the map for controlling the radius
 	      // of the coverage area.
@@ -28978,10 +29067,18 @@
 	  return map;
 	}
 
+	// Fire up the map as soon as the store says the DOM is ready.
+	//store.subscribe(() => {
+	//  let dump = store.getState();
+	//  if (dump.map_ready == true) {
+	//    readyMap();
+	//  }
+	//});
+
 	exports.default = readyMap;
 
 /***/ },
-/* 360 */
+/* 361 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -42237,7 +42334,7 @@
 	//# sourceMappingURL=leaflet-src.map
 
 /***/ },
-/* 361 */
+/* 362 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -42252,7 +42349,7 @@
 
 	    // define an AMD module that relies on 'leaflet'
 	    if (true) {
-	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(360)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(361)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 	    // define a Common JS module that relies on 'leaflet'
 	    } else if (typeof exports === 'object') {
@@ -42827,12 +42924,12 @@
 
 
 /***/ },
-/* 362 */
+/* 363 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _leaflet = __webpack_require__(360);
+	var _leaflet = __webpack_require__(361);
 
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 
@@ -43003,66 +43100,10 @@
 	};
 
 /***/ },
-/* 363 */
+/* 364 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 364 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(136);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(166);
-
-	var _reactRedux = __webpack_require__(312);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var mapStateToProps = function mapStateToProps(store) {
-	  return store;
-	};
-
-	var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
-	  return {};
-	};
-
-	// LocationForm is just a sign that points to the map.
-	function LocationInput(props) {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'content-blok location-input' },
-	    _react2.default.createElement(
-	      'h2',
-	      null,
-	      _react2.default.createElement('span', { className: 'icon-map' }),
-	      ' ',
-	      gon.map_heading
-	    ),
-	    _react2.default.createElement(
-	      'p',
-	      { className: 'field-prompt' },
-	      gon.map_label,
-	      ' ',
-	      _react2.default.createElement('span', { className: 'icon-arrow-right' })
-	    ),
-	    _react2.default.createElement('input', { type: 'hidden', name: 'location[latitude]', value: props.location.latitude }),
-	    _react2.default.createElement('input', { type: 'hidden', name: 'location[longitude]', value: props.location.longitude }),
-	    _react2.default.createElement('input', { type: 'hidden', name: 'location[radius_length]', value: props.radius.length }),
-	    _react2.default.createElement('input', { type: 'hidden', name: 'location[radius_units]', value: 'm' })
-	  );
-	};
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LocationInput);
 
 /***/ }
 /******/ ]);

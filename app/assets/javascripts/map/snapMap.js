@@ -12,9 +12,12 @@ function readyMap() {
   // If the div#map element exists, we'll spin up a Leaflet map and append it.
   const mapspot = document.querySelector('div#map');
   if (mapspot instanceof Element) {
-    // Get default coordinates from Rails, which generates a 'gon'
-    // object with this info.
-    const default_coordinates = [gon.default_coordinates.latitude, gon.default_coordinates.longitude];
+    // Dump the initial state from the store.
+    // We'll use these values to initialize the map.
+    const initial_dump = store.getState();
+
+    // Get the initial latitude and longitude for the map.
+    const default_coordinates = [initial_dump.location.latitude, initial_dump.location.longitude];
 
     // Uses Leaflet to initialize the map.
     // We'll add Controls later, but this is where we start.
@@ -37,7 +40,7 @@ function readyMap() {
     map.addControl(zoomControl);
 
     // Get the initial radius from the store.
-    const initial_radius = store.getState().radius.length;
+    const initial_radius = initial_dump.radius.length;
 
     // Add the slider to the map for controlling the radius
     // of the coverage area.
@@ -144,5 +147,13 @@ function readyMap() {
 
   return map;
 }
+
+// Fire up the map as soon as the store says the DOM is ready.
+//store.subscribe(() => {
+//  let dump = store.getState();
+//  if (dump.map_ready == true) {
+//    readyMap();
+//  }
+//});
 
 export default readyMap;

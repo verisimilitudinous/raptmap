@@ -15,13 +15,23 @@ const mapStateToProps = function(store) {
 };
 
 const mapDispatchToProps = function(dispatch, ownProps) {
-  return {};
+  return {
+    readyMap: function() {
+      dispatch({
+        type: 'READY_MAP',
+        map_ready: true
+      })
+    },
+  };
 };
 
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  componentDidMount() {
+    this.props.readyMap();
   }
   handleSubmit(event) {
     if ((this.props.topic.value !== '') && (this.props.user.email !== '')) {

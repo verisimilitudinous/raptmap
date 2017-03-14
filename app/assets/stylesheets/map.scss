@@ -47,19 +47,19 @@ header, .content-blok {
 p.field-prompt {
   margin: 0;
   padding-bottom: 1vh;
-  font-size: 3vh;
+  font-size: 3vmin;
 }
 
 header {
   padding-top: $blok-vertical-padding;
   padding-bottom: $blok-vertical-padding;
   h1 {
-    font-size: 6vh;
+    font-size: 6vmin;
     margin: 0;
     float: left;
   }
   p {
-    font-size: 3vh;
+    font-size: 3vmin;
     margin: 0;
     clear: both;
   }
@@ -75,7 +75,7 @@ footer nav {
     list-style-type: none;
   }
   li {
-    font-size: 3vh;
+    font-size: 3vmin;
     margin: 0 1vw 0 0;
     display: inline;
   }
@@ -83,7 +83,7 @@ footer nav {
 
 h2 {
   margin: 0;
-  font-size: 4vh;
+  font-size: 4vmin;
 }
 
 div.field {
@@ -92,7 +92,7 @@ div.field {
 
 button {
   height: 6vh;
-  font-size: 3vh;
+  font-size: 3vmin;
   border-radius: 1vh;
 }
 
@@ -104,7 +104,7 @@ button {
   width: 34vw;
   height: 7vh;
   padding: 0 1vw;
-  font-size: 3vh;
+  font-size: 3vmin;
   font-family: serif;
   border: .1vh solid #aaa;
   border-radius: 1vh; }
@@ -124,7 +124,7 @@ button {
   position: absolute;
   top: 7.2vh;
   width: 36vw; /* Should always be 2vh higher than .react-autosuggest__input */
-  font-size: 3vh;
+  font-size: 3vmin;
   font-family: serif;
   border: .1vh solid #aaa;
   background-color: #fff;

@@ -9,7 +9,7 @@ import { AutoForm, autoDispatchersByModel } from './AutoForm.jsx'
 // at bottom. Also:
 // http://redux.js.org/docs/basics/UsageWithReact.html#implementing-container-components
 const mapStateToProps = function(store) {
-  return store.topic;
+  return Object.assign({input_enabled: store.input_enabled}, store.topic);
 }
 
 // Likewise, mapStateToProps is also used by react-redux's connect()

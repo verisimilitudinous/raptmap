@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 // at bottom.
 
 const mapStateToProps = function(store) {
-  return store.user
+  return Object.assign({input_enabled: store.input_enabled}, store.user);
 };
 
 const mapDispatchToProps = function(dispatch, ownProps) {
@@ -35,6 +35,10 @@ class UserInput extends React.Component {
     this.props.changeValue(event.target.value, this.props.units);
   }
   render() {
+    let opts = {};
+    if (this.props.input_enabled !== true) {
+      opts['disabled'] = 'disabled'
+    };
     return (
       <div className="content-blok user-input">
         <h2>
@@ -47,7 +51,8 @@ class UserInput extends React.Component {
           <input type="text"
                  name="user[email]"
                  value={this.props.email}
-                 onChange={this.handleChange} />
+                 onChange={this.handleChange}
+                 {...opts}/>
         </div>
       </div>
     )

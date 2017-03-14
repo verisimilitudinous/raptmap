@@ -21,6 +21,10 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :rich_search, except: [:destroy], param: :uid
+
+    resources :simple_search, except: [:destroy], param: :uid
+
     get '/unsubscribe', to: 'cancellations#new'
     post '/unsubscribe', to: 'cancellations#submit'
     get '/unsubscribing', to: 'cancellations#sent'

@@ -31,7 +31,7 @@ module ApplicationHelper
   def asset_handler
     tags = String.new
     tags << tag(:link, rel: "stylesheet", href: "/stylesheets/icons.css")
-    if controller_name == "subscriptions"
+    if controller_name == "rich_search"
       tags << content_tag(:script, "", src: "/javascripts/#{fingerprinted_asset('map')}.js")
       tags << tag(:link, rel: "stylesheet", href: "/stylesheets/leaflet/leaflet.css")
       tags << tag(:link, rel: "stylesheet", href: "/stylesheets/leaflet/leaflet-slider.css")

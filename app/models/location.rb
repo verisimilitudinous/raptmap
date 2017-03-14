@@ -106,9 +106,9 @@ class Location < ApplicationRecord
     end
   end
 
-  def geolocate_by_ip(ip)
+  def by_ip(ip, locale)
     if missing_coordinates?
-      res = Location.by_ip(ip)
+      res = Location.by_ip(ip, locale)
       if res
         self.latitude = res[:latitude]
         self.longitude = res[:longitude]

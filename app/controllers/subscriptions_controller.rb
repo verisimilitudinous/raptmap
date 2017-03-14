@@ -13,7 +13,6 @@ class SubscriptionsController < ApplicationController
     else
       Location.new
     end
-    supply_gon_search
   end
 
   def results
@@ -58,7 +57,6 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     if @subscription.save
       SubscriptionMailer.registration_email(@subscription).deliver_later
-      # ProcessRegistrationEmailJob.perform_later(@subscription)
       flash[:success] = t('.success')
       redirect_to action: 'show', uid: @subscription.uid
     else
@@ -98,15 +96,4 @@ class SubscriptionsController < ApplicationController
       params.require(:location).permit([:latitude,:longitude,:name,:radius_length,:radius_units])
     end
 
-    def supply_gon_search
-      gon.default_coordinates = Location.by_ip(request.remote_ip, I18n.locale)
-      gon.topic_heading = t('subscriptions.search.topic_heading')
-      gon.topic_label = t('subscriptions.search.topic_label')
-      gon.topic_placeholder = t('subscriptions.search.topic_placeholder')
-      gon.map_heading = t('subscriptions.search.map_heading')
-      gon.map_label = t('subscriptions.search.map_label')
-      gon.user_heading = t('subscriptions.search.user_heading')
-      gon.user_label = t('subscriptions.search.user_label')
-      gon.submit_label = t('subscriptions.search.submit_label')
-    end
 end
