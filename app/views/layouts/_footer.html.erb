@@ -1,16 +1,13 @@
-<footer id="footer" class="footer content-blok">
-  <%= image_tag "heart-marker.svg", class: "heart-marker" %>
+<footer>
   <nav>
     <ul>
       <li><%= link_to t('.home'), root_path %></li>
       <li><%= link_to t('.about'), about_path %></li>
       <li><%= link_to t('.unsubscribe'), unsubscribe_path %></li>
       <% if Rails.env.development? %>
-      <li><%= english_locale_link(I18n.locale) %> | <%= japanese_locale_link(I18n.locale) %></li>
+      <li><%= english_locale_link(I18n.locale) %></li>
+      <li><%= japanese_locale_link(I18n.locale) %></li>
       <% end %>
     </ul>
   </nav>
-  <small>
-    Courtesy JDJ, <%= Date.today.year %>
-  </small>
 </footer>

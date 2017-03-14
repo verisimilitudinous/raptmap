@@ -17,31 +17,22 @@ const reducer = function(state, action) {
     // https://github.com/rtfeldman/seamless-immutable
     state = Immutable({
       topic: {
-        name: "",
-        live: {
-          value: "",
-          selected: null,
-          suggestions: [],
-          warn: false,
-          value_counter: 0,
-          suggestions_counter: 0
-        }
+        value: "",
+        selected: null,
+        suggestions: [],
+        warn: false
       },
       location: {
-        name: "",
-        latitude: null,
-        longitude: null,
-        live: {
-          value: "",
-          selected: null,
-          suggestions: [],
-          warn: false,
-          value_counter: 0,
-          suggestions_counter: 0
-        }
+        latitude: (gon.default_coordinates.latitude || null),
+        longitude: (gon.default_coordinates.longitude || null),
+        warn: false
       },
       radius: {
         length: 5000,
+        warn: false
+      },
+      user: {
+        email: "",
         warn: false
       }
     });
@@ -67,6 +58,12 @@ const reducer = function(state, action) {
       // Check to see if a step change was also submitted.
       step: (action.step ? action.step : state.step)
     }, { deep: true });
+  case 'COMMIT_TOPIC':
+    return Immutable.merge(state, {
+      topic: {
+        value: action.value
+      }
+    }, { deep: true });
   case 'CHANGE_LOCATION':
     return Immutable.merge(state, {
       location: action.location,
@@ -80,6 +77,12 @@ const reducer = function(state, action) {
   case 'CHANGE_STEP':
     return Immutable.merge(state, {
       step: (action.step ? action.step : state.step)
+    });
+  case 'CHANGE_EMAIL':
+    return Immutable.merge(state, {
+      user: {
+        email: action.email
+      }
     });
   }
   return state;

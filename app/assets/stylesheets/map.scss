@@ -1,3 +1,8 @@
+$blok-vertical-padding: 2vh;
+$blok-horizontal-padding: 1vw;
+$map-width: 60vw;
+$form-width: 38vw;
+
 .hidden {
   display: none;
 }
@@ -7,80 +12,96 @@ pre.debug_dump {
 }
 
 body {
-  margin: 1vh 1vw;
+  margin: 0;
+  padding: 0;
+}
+
+header, .content-blok, footer {
+  padding-left: $blok-horizontal-padding;
+  padding-right: $blok-horizontal-padding;
+  width: $form-width;
+}
+
+body, footer {
+  background-color: moccasin;
+}
+
+header, .content-blok {
+  background-color: papayawhip;
 }
 
 #map {
   position: absolute;
   top:0;
   right: 0;
-  width: 60%;
+  width: $map-width;
   height: 100%;
   margin: 0;
 }
 
 .content-blok {
-  margin: 5vh 0 0 0;
+  padding-top: $blok-vertical-padding;
+  padding-bottom: $blok-vertical-padding;
 }
 
 p.field-prompt {
-  margin: 1vh 0;
+  margin: 0;
+  padding-bottom: 1vh;
   font-size: 3vh;
 }
 
+header {
+  padding-top: $blok-vertical-padding;
+  padding-bottom: $blok-vertical-padding;
+  h1 {
+    font-size: 6vh;
+    margin: 0;
+    float: left;
+  }
+  p {
+    font-size: 3vh;
+    margin: 0;
+    clear: both;
+  }
+}
 
-header h1 {
-  font-size: 6vh;
+
+footer nav {
+  padding-top: $blok-vertical-padding;
+  padding-bottom: $blok-vertical-padding;
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+  li {
+    font-size: 3vh;
+    margin: 0 1vw 0 0;
+    display: inline;
+  }
+}
+
+h2 {
   margin: 0;
-  float: left;
-}
-
-header p {
-  font-size: 3vh;
-  margin: 0;
-  clear: both;
-}
-
-header img {
-  float: right;
-}
-
-div.field input {
-  width: 15.7em;
-  height: 2em;
-  padding: 0 .5em;
-  font-size: 1em;
-  font-family: serif;
-  border: 1px solid #aaa;
-  border-radius: .3em;
-}
-
-div.field select {
-  height: 2.1em;
-  padding: 0 .5em;
-  margin: 0 0 0 .5em;
+  font-size: 4vh;
 }
 
 div.field {
   position: relative;
-  float: left;
+}
+
+button {
+  height: 6vh;
+  font-size: 3vh;
+  border-radius: 1vh;
 }
 
 .react-autosuggest__container {
   position: relative;
-  /* float: left; */
 }
 
-button {
-  height: 2.1em;
-  margin: 0 0 0 .5em;
-  font-size: 1em;
-  font-family: serif;
-  border-radius: .3em;
-}
-
-.react-autosuggest__input {
-  width: 35vw;
+.react-autosuggest__input, div.field input {
+  width: 34vw;
   height: 7vh;
   padding: 0 1vw;
   font-size: 3vh;
@@ -88,7 +109,7 @@ button {
   border: .1vh solid #aaa;
   border-radius: 1vh; }
 
-.react-autosuggest__input:focus {
+.react-autosuggest__input:focus, div.field input:focus {
   outline: none; }
 
 .react-autosuggest__container--open .react-autosuggest__input {
@@ -102,7 +123,7 @@ button {
   display: block;
   position: absolute;
   top: 7.2vh;
-  width: 37vw; /* Should always be 2vh higher than .react-autosuggest__input */
+  width: 36vw; /* Should always be 2vh higher than .react-autosuggest__input */
   font-size: 3vh;
   font-family: serif;
   border: .1vh solid #aaa;
@@ -119,7 +140,7 @@ button {
 
 .react-autosuggest__suggestion {
   cursor: pointer;
-  padding: 2vh 1vw;;
+  padding: 2vh 1vw;
 }
 
 .react-autosuggest__suggestion--focused {
