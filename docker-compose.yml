@@ -25,6 +25,7 @@ services:
     depends_on:
       - 'postgres'
       - 'redis'
+      - 'selenium'
     build: .
     expose:
       - '3000'
@@ -53,6 +54,8 @@ services:
       - "3443:443"
     volumes:
       - './public:/raptmap/public'
+  selenium:
+    image: 'selenium/standalone-firefox'
 volumes:
   redis:
   postgres:
