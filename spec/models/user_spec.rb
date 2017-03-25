@@ -16,13 +16,13 @@ RSpec.describe User, type: :model do
   it "needs an email address" do
     user1.email = "   "
     user1.valid?
-    expect(user1.errors.added?(:email, :blank)).to eq(true)
+    expect(user1.check_for_error_types(:email).include?(:blank)).to eq(true)
   end
 
   it "ensures email addresses do not exceed maximum length" do
     user1.email = "a" * 244 + "@example.com"
     user1.valid?
-    expect(user1.errors.added?(:email, :too_long)).to eq(true)
+    expect(user1.check_for_error_types(:email).include?(:too_long)).to eq(true)
   end
 
   it "saves email addresses as lower-case" do
@@ -60,7 +60,7 @@ RSpec.describe User, type: :model do
   it "ensures email addresses are unique" do
     user3.email = user2.email.upcase
     user3.valid?
-    expect(user3.errors.added?(:email, :taken)).to eq(true)
+    expect(user3.check_for_error_types(:email).include?(:taken)).to eq(true)
   end
 
 end

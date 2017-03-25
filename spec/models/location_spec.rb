@@ -28,7 +28,7 @@ RSpec.describe Location, type: :model do
     expect(location1.uid).to be_truthy
   end
   
-  it "geolocates the coordinates based upon IP" do
+  it "geolocates default coordinates based upon IP" do
     location1.by_ip("1.2.3.4", :en)
     expect(location1.latitude).to be_a(Float)
     expect(location1.longitude).to be_a(Float)
@@ -45,7 +45,8 @@ RSpec.describe Location, type: :model do
     location1.longitude = nil
     location1.name = nil
     location1.valid?
-    expect(location1.errors.added?(:name, :blank)).to eq(true)
+    expect(location1.check_for_error_types(:name).include?(:blank)).to eq(true)
+    expect(location1.errors[:name]).to have(1).items
   end
   
   it "ensures a valid name" do 
@@ -53,21 +54,20 @@ RSpec.describe Location, type: :model do
     location1.longitude = nil
     location1.name = "%"
     location1.valid?
-    expect(location1.errors.added?(:name, :placeless)).to eq(true)
+    expect(location1.check_for_error_types(:name).include?(:placeless)).to eq(true)
   end 
   
   it "needs a radius" do 
     location1.radius_length = ""
     location1.valid?
-    expect(location1.errors.added?(:radius_length, :blank)).to eq(true)
+    expect(location1.check_for_error_types(:radius_length).include?(:blank)).to eq(true)
     expect(location1.errors[:radius_length]).to have(1).items
   end 
   
   it "ensures a numerical radius" do 
     location1.radius_length = "sup"
     location1.valid?
-    expect(location1.errors.added?(:radius_length, :not_a_number)).to eq(true)
-    expect(location1.errors[:radius_length]).to have(1).items
+    expect(location1.check_for_error_types(:radius_length).include?(:not_a_number)).to eq(true)
   end 
   
 end
