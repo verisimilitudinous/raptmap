@@ -1,13 +1,9 @@
 require 'rails_helper'
 
-def attrs
-  {email: "test1@id.xjensen.com"}
-end
-
 RSpec.describe User, type: :model do
 
   # Define the main user for most tests.
-  let(:user1) { FactoryGirl.build(:user_1) }
+  let(:user1) { FactoryGirl.build(:user, :test1) }
 
   it "validates when given valid attributes" do
     expect(user1).to be_valid
@@ -54,8 +50,8 @@ RSpec.describe User, type: :model do
   end
 
   # Define a couple more users for comparisons.
-  let(:user2) { FactoryGirl.create(:user_2) }
-  let(:user3) { FactoryGirl.build(:user_3) }
+  let(:user2) { FactoryGirl.create(:user, :test2) }
+  let(:user3) { FactoryGirl.build(:user, :test3) }
 
   it "ensures email addresses are unique" do
     user3.email = user2.email.upcase

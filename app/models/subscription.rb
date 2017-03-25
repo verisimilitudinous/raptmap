@@ -14,6 +14,12 @@ class Subscription < ApplicationRecord
   end
   before_create do
     generate_uids
+    activate
+  end
+
+  def activate
+    self.active = true
+    self.location.active = true
   end
 
   def safely_destroy
@@ -63,7 +69,7 @@ class Subscription < ApplicationRecord
     self.location.geocode_as_needed
     find_topic if self.topic.id.nil?
     unless self.topic.id.nil?
-      Subscription.where(location_id: self.location.nearbys(n.location.radius_in_miles,
+      Subscription.where(location_id: self.location.nearbys(location.radius_in_miles,
                                                             select: "id",
                                                             select_distance: false,
                                                             select_bearing: false),

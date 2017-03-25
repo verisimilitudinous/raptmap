@@ -1,20 +1,23 @@
 FactoryGirl.define do
 
-  factory :topic_1, class: Topic do
-    name "Baseball"
-  end
+  factory :topic, class: Topic do
+    name "Default Topic Name"
 
-  factory :topic_2, class: Topic do
-    name "Baseketball"
-  end
+    trait :baseball do
+      name "Baseball"
+    end
 
-  factory :topic_3, class: Topic do
-    name "Basketball"
+    trait :baseketball do
+      name "Baseketball"
+    end
+
+    trait :basketball do
+      name "Basketball"
+    end
+
+    trait :football do
+      name "Football"
+    end
   end
-  
-  factory :topic_4, class: Topic do
-    name "Football"
-  end
-  
 
 end

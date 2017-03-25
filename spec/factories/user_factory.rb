@@ -1,15 +1,19 @@
 FactoryGirl.define do
 
-  factory :user_1, class: User do
-    email "test1@id.xjensen.com"
-  end
+  factory :user, class: User do
+    email "default@id.xjensen.com"
 
-  factory :user_2, class: User do
-    email "test2@id.xjensen.com"
-  end
+    trait :test1 do
+      email "test1@id.xjensen.com"
+    end
 
-  factory :user_3, class: User do
-    email "test3@id.xjensen.com"
+    trait :test2 do
+      email "test2@id.xjensen.com"
+    end
+
+    trait :test3 do
+      email "test3@id.xjensen.com"
+    end
   end
 
 end
