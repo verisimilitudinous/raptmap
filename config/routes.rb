@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :rich_search, except: [:destroy], param: :uid
+    resources :rich_subscriptions, except: [:destroy], param: :uid
 
     resources :simple_search, except: [:destroy], param: :uid
 

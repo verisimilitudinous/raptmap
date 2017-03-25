@@ -68,7 +68,7 @@ en:
     registration_email:
       subject: "New subscription to %{topic_name} at %{location_name}"
       from: "Rapt Map Registrar"
-  rich_search:
+  rich_subscriptions:
     new:
       javascript_disabled_heading: "Javascript Disabled"
       javascript_disabled_html: "Javascript appears to be disabled in your browser. Try out the lo-fi form instead at the following link."

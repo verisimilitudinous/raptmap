@@ -1,0 +1,2 @@
+module RichSubscriptionsHelper
+end

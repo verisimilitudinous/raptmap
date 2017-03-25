@@ -1,26 +1,7 @@
-class RichSearchController < ApplicationController
+class RichSubscriptionsController < ApplicationController
 
   def new
-    @topic_uid = params[:topic_uid]
-    @location_uid = params[:location_uid]
-    @topic = if @topic_uid.present? then
-      Topic.where(uid: params[:topic_uid]).first_or_initialize
-    else
-      Topic.new
-    end
-    @location = if @location_uid.present? then
-      Location.where(uid: params[:location_uid]).first_or_initialize
-    else
-      Location.new
-    end
-    gon.topic = { name: (@topic.name || "") }
-    if @location.missing_coordinates?
-      @location.by_ip(request.remote_ip, I18n.locale)
-    end
-    gon.location = { latitude: @location.latitude,
-                     longitude: @location.longitude }
-    gon.radius = { length: @location.radius_length_in_meters }
-    supply_values_to_gon(@topic, @location, User.new, true)
+    supply_values_to_gon(Topic.new, Location.new, User.new, true)
   end
 
   def show
@@ -33,6 +14,10 @@ class RichSearchController < ApplicationController
     @subscription = Subscription.find_by_uid(params[:uid])
     supply_values_to_gon(@subscription.topic, @subscription.location, @subscription.user, true)
     render action: 'new'
+  end
+
+  def create
+
   end
 
   private

@@ -63,7 +63,9 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-collection_matchers'
   gem 'database_cleaner'
+  gem "factory_girl", "~> 4.0"
 end
 
 group :test do
