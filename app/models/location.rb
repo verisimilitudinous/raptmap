@@ -16,7 +16,6 @@ class Location < ApplicationRecord
   after_validation do
     self.errors.delete(:latitude)
     self.errors.delete(:longitude)
-    self.errors.delete(:radius_length)
     location_must_be_valid
   end
   before_create :generate_uid
@@ -97,10 +96,13 @@ class Location < ApplicationRecord
         errors.add(:name, :placeless)
       end
     end
-    if self.radius_length.blank?
-      errors.add(:radius_length, :blank)
-    else
-      if !self.radius_length.is_a? Float
+    radius_errors = check_for_error_types(:radius_length)
+    if radius_errors.any?
+      if radius_errors.include?(:blank)
+        errors.delete(:radius_length)
+        errors.add(:radius_length, :blank)
+      elsif radius_errors.include?(:not_a_number)
+        errors.delete(:radius_length)
         errors.add(:radius_length, :not_a_number)
       end
     end
