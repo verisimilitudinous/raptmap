@@ -29,6 +29,9 @@ require 'rspec/collection_matchers'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+# Turn off all the SQL logging during tests.
+ActiveRecord::Base.logger = nil
+
 # Set up Capybara to use Dockerized Selenium.
 if ENV['SELENIUM_REMOTE_HOST']
   Capybara.javascript_driver = :selenium_remote_firefox
