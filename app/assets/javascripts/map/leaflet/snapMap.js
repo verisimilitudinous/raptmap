@@ -24,7 +24,7 @@ function readyMap() {
     // Basic overview available here:
     // http://leafletjs.com/examples/quick-start/
     map = L.map('map', {zoomControl: false}).setView(default_coordinates, 12);
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>',
       maxZoom: 17
     }).addTo(map);

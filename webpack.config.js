@@ -16,7 +16,12 @@ const css_output_template = prod ? "stylesheets/[name]-[hash].css" : "stylesheet
 const js_output_template = prod ? "javascripts/[name]-[hash].js" : "javascripts/[name].js";
 
 module.exports = {
+  devtool: 'cheap-module-source-map',
   context: __dirname + "/app/assets",
+
+  stats: {
+    warnings: false
+  },
 
   entry: {
     application: ["./javascripts/application.js", "./stylesheets/application.scss"],
@@ -54,6 +59,12 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify((prod ? 'production' : 'development'))
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.ProvidePlugin({
       Promise: 'imports?this=>global!exports?global.Promise!es6-promise',
       fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'

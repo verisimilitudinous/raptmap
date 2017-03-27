@@ -516,7 +516,7 @@
 		}
 
 		return _;
-	})();
+		})();
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)(module)))
 
 /***/ },
@@ -6583,3 +6583,4 @@
 
 /***/ }
 /******/ ]);
+//# sourceMappingURL=application.js.map
