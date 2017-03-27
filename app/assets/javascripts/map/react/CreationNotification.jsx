@@ -13,7 +13,14 @@ const mapStateToProps = function(store) {
 }
 
 const mapDispatchToProps = function(dispatch, ownProps) {
-  return {}
+  return {
+    // Changes the user's email.
+    resetTopic: function() {
+      dispatch({
+        type: 'RESET_TOPIC'
+      })
+    },
+  }
 }
 
 // Nothing fancy here.
@@ -35,7 +42,9 @@ function CreationNotification(props) {
         <p>
           {gon.create.again_summary_html}
         </p>
-        <a>{gon.create.again_link_label}</a>
+        <button type="submit" tabIndex="1" onClick={props.resetTopic}>
+          {gon.create.again_link_label}
+        </button>
       </div>
     </div>
   );

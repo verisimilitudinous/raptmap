@@ -20,7 +20,7 @@ class RichSubscriptionsController < ApplicationController
     @subscription = Subscription.new(subscription_params)
     respond_to do |format|
       if @subscription.save
-        # SubscriptionMailer.registration_email(@subscription).deliver_later
+        SubscriptionMailer.registration_email(@subscription).deliver_later
         payload = @subscription.as_json(include: [:topic, :location, :user])
         payload["status"] = "success"
         format.json { render json: payload, status: 201 }

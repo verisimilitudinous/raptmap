@@ -85,7 +85,7 @@ en:
       success_heading: "Subscribed!"
       success_summary_html: "You're all done here. Check your email for further instructions."
       again_heading: "Again?"
-      again_summary_html: "Feel free to subscribe to another topic at this location."
+      again_summary_html: "Or, feel free to subscribe to another topic at this location."
       again_link_label: "Subscribe to another topic"
   subscriptions:
     destroy:

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import Switchboard from './Switchboard.jsx'
+import SearchForm from './SearchForm.jsx'
 import store from '../store.js'
 import readyMap from '../leaflet/snapMap.js'
 
@@ -15,7 +15,7 @@ import readyMap from '../leaflet/snapMap.js'
 function readyApp() {
   render(
     <Provider store={store}>
-      <Switchboard/>
+      <SearchForm/>
     </Provider>,
     document.getElementById('search-form')
   );

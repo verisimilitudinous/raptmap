@@ -102,6 +102,18 @@ const reducer = function(state, action) {
         warning: action.warning
       }
     }, { deep: true });
+  case 'RESET_TOPIC':
+    return Immutable.merge(state, {
+      topic: {
+        value: "",
+        selected: null,
+        suggestions: [],
+        warn: false,
+        warning: ""
+      },
+      created: false,
+      input_enabled: true
+    }, { deep: true });
   case 'READY_MAP':
     return Immutable.merge(state, {
       map_ready: action.map_ready

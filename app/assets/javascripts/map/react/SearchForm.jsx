@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import TopicInput from './TopicInput.jsx'
 import LocationInput from './LocationInput.jsx'
 import UserInput from './UserInput.jsx'
+import CreationNotification from './CreationNotification.jsx'
 
 // See ./TopicForm.jsx for an explanation of mapStateToProps,
 // mapDispatchToProps, and the connect() function that appears
@@ -39,6 +40,16 @@ const mapDispatchToProps = function(dispatch, ownProps) {
       })
     }
   };
+};
+
+function SubmitButton(props) {
+  return (
+    <form className="search-form" onSubmit={props.handleSubmit}>
+      <div className="content-blok submit-input">
+        <button type="submit" tabIndex="3">{gon.submit_label}</button>
+      </div>
+    </form>
+  )
 };
 
 class SearchForm extends React.Component {
@@ -100,15 +111,14 @@ class SearchForm extends React.Component {
   }
   render() {
     return (
-      <form className="search-form" onSubmit={this.handleSubmit}>
-        <TopicInput/>
-        <LocationInput/>
+      <div className="search-form">
+        {(this.props.created === false) ? <TopicInput/> : null}
+        {(this.props.created === false) ? <LocationInput/> : null}
+        {(this.props.created === true) ? <CreationNotification/> : null}
         <div id="map"></div>
-        <UserInput/>
-        <div className="content-blok submit-input">
-          <button type="submit" tabIndex="3">{gon.submit_label}</button>
-        </div>
-      </form>
+        {(this.props.created === false) ? <UserInput/> : null}
+        {(this.props.created === false) ? <SubmitButton handleSubmit={this.handleSubmit}/> : null}
+      </div>
     )
   }
 }

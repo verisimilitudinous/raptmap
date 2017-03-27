@@ -1,7 +1,7 @@
 $blok-vertical-padding: 2vh;
 $blok-horizontal-padding: 1vw;
 $map-width: 60vw;
-$form-width: 38vw;
+$form-width: 40vw;
 
 .hidden {
   display: none;
@@ -31,6 +31,7 @@ header, .content-blok {
 
 div#main {
   width: $form-width;
+  display: inline-block;
 }
 
 #map {
@@ -115,7 +116,7 @@ div.warn input {
 }
 
 .react-autosuggest__input, div.field input {
-  width: 34vw;
+  width: 36vw;
   height: 7vh;
   padding: 0 1vw;
   font-size: 3vmin;
@@ -137,7 +138,7 @@ div.warn input {
   display: block;
   position: absolute;
   top: 7.2vh;
-  width: 36vw; /* Should always be 2vh higher than .react-autosuggest__input */
+  width: 38vw; /* Should always be 2vh higher than .react-autosuggest__input */
   font-size: 3vmin;
   font-family: serif;
   border: .1vh solid #aaa;
