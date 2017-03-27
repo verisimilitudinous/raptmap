@@ -43,8 +43,9 @@ function TopicInput(props) {
       </p>
       <AutoForm url='/topics/autocomplete'
                 placeholder={gon.topic_placeholder}
-                warning={gon.topic_warning}
+                emptyWarning={gon.topic_empty}
                 inputName='topic[name]'
+                tabIndex="1"
                 {...props} />
     </div>
   )

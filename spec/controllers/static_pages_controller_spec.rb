@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe StaticPagesController, type: :controller do
-  describe "GET about" do
+  describe "static_pages#about" do
 
     it "renders the Japanese template" do
       get :about, params: {locale: :ja}

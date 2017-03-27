@@ -1,4 +1,4 @@
-import readyApp from './map/readyApp.jsx'
+import readyApp from './map/react/readyApp.jsx'
 
 // Initialize the React app (readyApp).
 function startApp() {

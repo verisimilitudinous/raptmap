@@ -176,10 +176,11 @@ class AutoForm extends React.Component {
     // inputProps is standard practice for react-autosuggest.
     // https://github.com/moroshko/react-autosuggest#inputPropsProp
     let inputProps = {
-      placeholder: (this.props.warn ? this.props.warning : this.props.placeholder),
+      placeholder: (this.props.warn ? this.props.emptyWarning : this.props.placeholder),
       value: this.props.value,
       onChange: this.handleChange,
-      name: this.props.inputName
+      name: this.props.inputName,
+      tabIndex: this.props.tabIndex
     };
     if (this.props.input_enabled !== true) {
       inputProps['disabled'] = 'disabled'

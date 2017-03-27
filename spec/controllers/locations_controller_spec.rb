@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe LocationsController, type: :controller do
-  describe "GET autocomplete" do
+  describe "locations#autocomplete" do
 
-    it "returns json" do
-      get :autocomplete, params: {query: "Lodi, CA, USA", counter: 1}, xhr: true
-      expect(response.header['Content-Type'].include?('json')).to eq(true)
+    it "submits queries with correct params to Pelias" do
+      counter = 1
+      get :autocomplete, params: {query: "Lodi, CA, USA", counter: counter}, xhr: true
+      expect(assigns(:counter)).to eq(counter)
+      expect(assigns(:locations)).to be_a(Array)
+      expect(assigns(:locations)).to have_at_least(1).items
     end
 
   end

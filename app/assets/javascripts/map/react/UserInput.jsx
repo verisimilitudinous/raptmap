@@ -51,7 +51,9 @@ class UserInput extends React.Component {
           <input type="text"
                  name="user[email]"
                  value={this.props.email}
+                 placeholder={(this.props.warn ? gon.user_empty : gon.user_placeholder)}
                  onChange={this.handleChange}
+                 tabIndex="2"
                  {...opts}/>
         </div>
       </div>

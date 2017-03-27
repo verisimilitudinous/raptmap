@@ -10,14 +10,16 @@ body {
 
 header, .content-blok, footer {
   padding-left: 1vw;
-  padding-right: 1vw;
-  width: 38vw; }
+  padding-right: 1vw; }
 
 body, footer {
   background-color: moccasin; }
 
 header, .content-blok {
   background-color: papayawhip; }
+
+div#main {
+  width: 38vw; }
 
 #map {
   position: absolute;
@@ -71,6 +73,18 @@ button {
   height: 6vh;
   font-size: 3vmin;
   border-radius: 1vh; }
+
+div.warn input {
+  border: 0.1vh solid #cc0000;
+  animation: border-pulsate 2s infinite; }
+
+@keyframes border-pulsate {
+  0% {
+    border-color: #cc0000; }
+  50% {
+    border-color: rgba(204, 0, 0, 0); }
+  100% {
+    border-color: #cc0000; } }
 
 .react-autosuggest__container {
   position: relative; }

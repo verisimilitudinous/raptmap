@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import SearchForm from './searchForm.jsx'
-import store from './store.js'
-import readyMap from './snapMap.js'
+import Switchboard from './Switchboard.jsx'
+import store from '../store.js'
+import readyMap from '../leaflet/snapMap.js'
 
 // Initialize the React components.
 // https://facebook.github.io/react/docs/react-dom.html
@@ -15,7 +15,7 @@ import readyMap from './snapMap.js'
 function readyApp() {
   render(
     <Provider store={store}>
-      <SearchForm/>
+      <Switchboard/>
     </Provider>,
     document.getElementById('search-form')
   );

@@ -1,4 +1,4 @@
-import store from './store.js'
+import store from '../store.js'
 import L from 'leaflet'
 import 'leaflet.locatecontrol'
 import './leaflet-slider.js'
@@ -32,8 +32,8 @@ function readyMap() {
     // Manually place the zoom control.
     var zoomControl = L.control.zoom({
       position: 'bottomright',
-      zoomInTitle: 'Zoom in.',
-      zoomOutTitle: 'Zoom out.',
+      zoomInTitle: gon.map_controls.zoom_in,
+      zoomOutTitle: gon.map_controls.zoom_out,
       zoomInText: '&#xf00e;',
       zoomOutText: '&#xf010;'
     });
@@ -64,8 +64,12 @@ function readyMap() {
       syncSlider: true,
       increment: true,
       incrementUp: '&#xf065;',
+      incrementUpTitle: gon.map_controls.radius_up,
       incrementDown: '&#xf066;',
-      title: "Set my coverage area."
+      incrementDownTitle: gon.map_controls.radius_down,
+      showValue: true,
+      showValueTitle: gon.map_controls.radius_value,
+      title: gon.map_controls.radius_slider
     });
     map.addControl(radiusSlider);
 
@@ -79,7 +83,7 @@ function readyMap() {
       showPopup: false,
       keepCurrentZoomLevel: true,
       strings: {
-        title: "Go to my current location."
+        title: gon.map_controls.geolocator
       }
     }).addTo(map);
 

@@ -22,11 +22,14 @@ L.Control.Slider = L.Control.extend({
     orientation: 'horizontal',
     increment: false,
     incrementUp: '+',
+    incrementUpTitle: "Increase",
     incrementDown: '-',
+    incrementDownTitle: "Decrease",
     getValue: function(value) {
       return value;
     },
     showValue: true,
+    showValueTitle: "Current Value",
     syncSlider: false
   },
   initialize: function (f, options) {
@@ -69,11 +72,13 @@ L.Control.Slider = L.Control.extend({
     if (this.options.showValue){
       this._sliderValue = L.DomUtil.create('p', className+'-value', this._container);
       this._sliderValue.innerHTML = this.options.getValue(this.options.value);
+      this._sliderValue.setAttribute("title", this.options.showValueTitle);
     }
 
     if(this.options.increment) {
       this._plus = L.DomUtil.create('a', className + '-plus', this._container);
       this._plus.innerHTML = this.options.incrementUp;
+      this._plus.setAttribute("title", this.options.incrementUpTitle);
       L.DomEvent.on(this._plus, 'click', this._increment, this);
       L.DomUtil.addClass(this._container, 'leaflet-control-slider-incdec');
     }
@@ -101,6 +106,7 @@ L.Control.Slider = L.Control.extend({
     if(this.options.increment) {
       this._minus = L.DomUtil.create('a', className + '-minus', this._container);
       this._minus.innerHTML = this.options.incrementDown;
+      this._minus.setAttribute("title", this.options.incrementDownTitle);
       L.DomEvent.on(this._minus, 'click', this._decrement, this);
     }
 

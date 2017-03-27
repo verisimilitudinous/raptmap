@@ -19,7 +19,6 @@ body {
 header, .content-blok, footer {
   padding-left: $blok-horizontal-padding;
   padding-right: $blok-horizontal-padding;
-  width: $form-width;
 }
 
 body, footer {
@@ -28,6 +27,10 @@ body, footer {
 
 header, .content-blok {
   background-color: papayawhip;
+}
+
+div#main {
+  width: $form-width;
 }
 
 #map {
@@ -94,6 +97,17 @@ button {
   height: 6vh;
   font-size: 3vmin;
   border-radius: 1vh;
+}
+
+div.warn input {
+  border: .1vh solid rgba(204, 0, 0, 1);
+  animation: border-pulsate 2s infinite;
+}
+
+@keyframes border-pulsate {
+  0% { border-color: rgba(204, 0, 0, 1); }
+  50% { border-color: rgba(204, 0, 0, 0); }
+  100% { border-color: rgba(204, 0, 0, 1); }
 }
 
 .react-autosuggest__container {

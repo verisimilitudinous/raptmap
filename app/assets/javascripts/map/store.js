@@ -20,7 +20,8 @@ const reducer = function(state, action) {
         value: (gon.topic.name || ""),
         selected: null,
         suggestions: [],
-        warn: false
+        warn: false,
+        warning: ""
       },
       location: {
         latitude: (gon.location.latitude || null),
@@ -33,12 +34,15 @@ const reducer = function(state, action) {
       },
       user: {
         email: (gon.user.email || ""),
-        warn: false
+        warn: false,
+        warning: ""
       },
       // For disabling edits in specific circumstances.
       input_enabled: (gon.editable || true),
       // Tells the map when to initialize itself.
-      map_ready: false
+      map_ready: false,
+      // Tells the app when a subscription has been created.
+      created: false
     });
   };
 
@@ -78,19 +82,33 @@ const reducer = function(state, action) {
       radius: action.radius,
       step: (action.step ? action.step : state.step)
     }, { deep: true });
-  case 'CHANGE_STEP':
-    return Immutable.merge(state, {
-      step: (action.step ? action.step : state.step)
-    });
   case 'CHANGE_EMAIL':
     return Immutable.merge(state, {
       user: {
         email: action.email
       }
     });
+  case 'WARN_USER':
+    return Immutable.merge(state, {
+      user: {
+        warn: true,
+        warning: action.warning
+      }
+    }, { deep: true });
+  case 'WARN_TOPIC':
+    return Immutable.merge(state, {
+      topic: {
+        warn: true,
+        warning: action.warning
+      }
+    }, { deep: true });
   case 'READY_MAP':
     return Immutable.merge(state, {
       map_ready: action.map_ready
+    });
+  case 'SUCCESSFULLY_CREATED':
+    return Immutable.merge(state, {
+      created: true
     });
   }
   return state;

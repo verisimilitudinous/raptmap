@@ -23,6 +23,14 @@ en:
   hello: "Hello world"
   domain: "raptmap.com"
   mail_domain: "mail.raptmap.com"
+  map_controls:
+    radius_value: "The radius of my coverage area, in kilometers."
+    radius_up: "Increase my coverage area."
+    radius_down: "Decrease my coverage area."
+    radius_slider: "Set my coverage area."
+    geolocator: "Go to my current location."
+    zoom_in: "Zoom in."
+    zoom_out: "Zoom out."
   measurements:
     km:
       text: "kilometers"
@@ -73,6 +81,12 @@ en:
       javascript_disabled_heading: "Javascript Disabled"
       javascript_disabled_html: "Javascript appears to be disabled in your browser. Try out the lo-fi form instead at the following link."
       simple_form_label: "Lo-fi Version"
+    create:
+      success_heading: "Subscribed!"
+      success_summary_html: "You're all done here. Check your email for further instructions."
+      again_heading: "Again?"
+      again_summary_html: "Feel free to subscribe to another topic at this location."
+      again_link_label: "Subscribe to another topic"
   subscriptions:
     destroy:
       notice: "You are now unsubscribed."
@@ -103,6 +117,7 @@ en:
       map_label: "Where do you want to find others?"
       user_heading: "Chat"
       user_label: "Enter your email address to join the conversation."
+      user_placeholder: "e.g., chipper-fellow@example.com"
       submit_label: "Join the conversation"
     show:
       title: "%{topic_name} near %{location_name}"

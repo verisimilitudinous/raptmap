@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?13x74c');
-  src:  url('fonts/icomoon.eot?13x74c#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?13x74c') format('truetype'),
-    url('fonts/icomoon.woff?13x74c') format('woff'),
-    url('fonts/icomoon.svg?13x74c#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?1mufks');
+  src:  url('fonts/icomoon.eot?1mufks#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?1mufks') format('truetype'),
+    url('fonts/icomoon.woff?1mufks') format('woff'),
+    url('fonts/icomoon.svg?1mufks#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -36,6 +36,9 @@
 .icon-clock-o:before {
   content: "\f017";
 }
+.icon-refresh:before {
+  content: "\f021";
+}
 .icon-map-marker:before {
   content: "\f041";
 }
@@ -63,23 +66,29 @@
 .icon-facebook-square:before {
   content: "\f082";
 }
+.icon-globe:before {
+  content: "\f0ac";
+}
 .icon-google-plus-square:before {
   content: "\f0d4";
 }
 .icon-spinner:before {
   content: "\f110";
 }
-.icon-bullseye:before {
-  content: "\f140";
-}
 .icon-tumblr-square:before {
   content: "\f174";
 }
-.icon-safari:before {
-  content: "\f267";
+.icon-paper-plane:before {
+  content: "\f1d8";
+}
+.icon-send:before {
+  content: "\f1d8";
 }
 .icon-map:before {
   content: "\f279";
+}
+.icon-envelope-open:before {
+  content: "\f2b6";
 }
 .icon-binoculars:before {
   content: "\e900";
