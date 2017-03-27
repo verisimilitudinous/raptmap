@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :rich_subscriptions, except: [:destroy], param: :uid
+    resources :rich_subscriptions, except: [:destroy, :index], param: :uid
 
     resources :simple_search, except: [:destroy], param: :uid
 
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   # get '/simple', to: 'subscriptions#new', defaults: { map: false }, as: :simple_form
   # get '/map', to: 'subscriptions#new', defaults: { map: true }, as: :map
   get '/:locale', to: 'subscriptions#search'
-  root 'subscriptions#search'
+  root 'rich_subscriptions#new'
 
   match '*any', to: 'application#options', :via => [:options]
 

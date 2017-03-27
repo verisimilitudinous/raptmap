@@ -117,11 +117,9 @@ Before deploying to prod, use the `-p` flag. This will minify assets and fingerp
 webpack -p
 ```
 
-# Defunct React-based UI
+# Upcoming React-based UI
 
-The initial UI was built around a full-screen map with [Leaflet](http://leafletjs.com/), [React](https://facebook.github.io/react/), and [Redux](http://redux.js.org/). The carcass can be viewed at [/map_test](https://raptmap.com/map_test). Related Javascript and JSX can be found in `app/assets/javascripts/map`.
-
-This was scrapped when it became clear that the full-screen map concept would not serve the goals of the service or its users. Still, we need a map somewhere, because the thing is called "Raptmap", right? The current plan is to integrate some of this work into the current UI, in ways that make more sense.
+A modified UI is currently under construction and can be viewed at [/rich_subscriptions/new](https://raptmap.com/rich_subscriptions/new). Notable tools include [Leaflet](http://leafletjs.com/), [React](https://facebook.github.io/react/), and [Redux](http://redux.js.org/). Related Javascript and JSX can be found in `/app/assets/javascripts/map`.
 
 
 # Major tasks ahead
