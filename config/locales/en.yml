@@ -114,7 +114,7 @@ en:
       radius_label: "How widely do you want to search for others?"
       radius_length_placeholder: "e.g., 5"
       map_heading: "Location"
-      map_label: "Where do you want to find others?"
+      map_label: "Where do you want to find others? Place the circle on the map."
       user_heading: "Chat"
       user_label: "Enter your email address to join the conversation."
       user_placeholder: "e.g., chipper-fellow@example.com"

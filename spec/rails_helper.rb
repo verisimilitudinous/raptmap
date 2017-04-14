@@ -40,8 +40,10 @@ if ENV['SELENIUM_REMOTE_HOST']
       app,
       browser: :remote,
       url: "http://#{ENV['SELENIUM_REMOTE_HOST']}:4444/wd/hub",
-      desired_capabilities: :firefox)
+      desired_capabilities: :firefox
+    )
   end
+  Capybara.default_wait_time = 5
 end
 
 RSpec.configure do |config|

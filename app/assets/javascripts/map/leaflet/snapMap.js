@@ -30,7 +30,7 @@ function readyMap() {
     }).addTo(map);
 
     // Manually place the zoom control.
-    var zoomControl = L.control.zoom({
+    const zoomControl = L.control.zoom({
       position: 'bottomright',
       zoomInTitle: gon.map_controls.zoom_in,
       zoomOutTitle: gon.map_controls.zoom_out,
@@ -44,7 +44,7 @@ function readyMap() {
 
     // Add the slider to the map for controlling the radius
     // of the coverage area.
-    var radiusSlider = L.control.slider(function(value){
+    const radiusSlider = L.control.slider(function(value){
       store.dispatch({
         type: 'CHANGE_RADIUS',
         radius: {
