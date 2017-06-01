@@ -22,11 +22,11 @@ header, .content-blok, footer {
 }
 
 body, footer {
-  background-color: moccasin;
+  background-color: gainsboro;
 }
 
 header, .content-blok {
-  background-color: papayawhip;
+  background-color: whitesmoke;
 }
 
 div#main {
@@ -51,19 +51,19 @@ div#main {
 p.field-prompt {
   margin: 0;
   padding-bottom: 1vh;
-  font-size: 3vmin;
+  font-size: 1.2em;
 }
 
 header {
   padding-top: $blok-vertical-padding;
   padding-bottom: $blok-vertical-padding;
   h1 {
-    font-size: 6vmin;
+    font-size: 3em;
     margin: 0;
     float: left;
   }
   p {
-    font-size: 3vmin;
+    font-size: 1.2em;
     margin: 0;
     clear: both;
   }
@@ -79,7 +79,7 @@ footer nav {
     list-style-type: none;
   }
   li {
-    font-size: 3vmin;
+    font-size: 1.2em;
     margin: 0 1vw 0 0;
     display: inline;
   }
@@ -87,7 +87,7 @@ footer nav {
 
 h2 {
   margin: 0;
-  font-size: 4vmin;
+  font-size: 2em;
 }
 
 div.field {
@@ -96,7 +96,8 @@ div.field {
 
 button {
   height: 6vh;
-  font-size: 3vmin;
+  padding: 0 1vw;
+  font-size: 1.5em;
   border-radius: 1vh;
 }
 
@@ -119,7 +120,7 @@ div.warn input {
   width: 36vw;
   height: 7vh;
   padding: 0 1vw;
-  font-size: 3vmin;
+  font-size: 1.2em;
   font-family: serif;
   border: .1vh solid #aaa;
   border-radius: 1vh; }
@@ -139,7 +140,7 @@ div.warn input {
   position: absolute;
   top: 7.2vh;
   width: 38vw; /* Should always be 2vh higher than .react-autosuggest__input */
-  font-size: 3vmin;
+  font-size: 1.2em;
   font-family: serif;
   border: .1vh solid #aaa;
   background-color: #fff;

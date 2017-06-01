@@ -1,2 +1,1 @@
-require('./awesomplete.js');
-require('./subscriptions.js');
+// No JS for now.

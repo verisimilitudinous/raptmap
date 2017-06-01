@@ -16,9 +16,6 @@ class CancellationsController < ApplicationController
     end
   end
 
-  def sent
-  end
-
   def destroy
     @subscription = Subscription.find_by_unsubscribe_uid(params[:unsubscribe_uid])
     if @subscription.present?

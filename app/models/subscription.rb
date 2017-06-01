@@ -69,12 +69,14 @@ class Subscription < ApplicationRecord
     self.location.geocode_as_needed
     find_topic if self.topic.id.nil?
     unless self.topic.id.nil?
-      Subscription.where(location_id: self.location.nearbys(location.radius_in_miles,
-                                                            select: "id",
-                                                            select_distance: false,
-                                                            select_bearing: false),
-                         topic_id: self.topic.id,
-                         active: true)
+      Subscription.where(
+        location_id: self.location.nearbys(
+          location.radius_in_miles,
+          select: "id",
+          select_distance: false,
+          select_bearing: false),
+        topic_id: self.topic.id,
+        active: true)
     else
       []
     end

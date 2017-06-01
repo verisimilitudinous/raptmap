@@ -66,17 +66,6 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  def destroy
-    @subscription = Subscription.find_by_uid(params[:subscription][:uid])
-    @subscription.safely_destroy
-    redirect_to subscriptions_url, notice: t('.notice')
-  end
-
-  def test_ip
-    location = Location.by_ip(request.remote_ip, I18n.locale)
-    render text: (location[:latitude].to_s + "," + location[:longitude].to_s)
-  end
-
   private
     def subscription_params
       params.require(:subscription).permit([user_attributes: [:email],

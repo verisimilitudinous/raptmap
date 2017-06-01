@@ -1,6 +1,6 @@
 # Rapt Map
 
-Welcome to the repo for [raptmap.com](https://raptmap.com "Rapt Map"). Although the site is live and running, this code is definitely not production quality yet. You've been warned!
+This is the repo for Rapt Map, a location-aware email list builder. Still very much a work in progress.
 
 
 # Dependencies
@@ -116,24 +116,3 @@ Before deploying to prod, use the `-p` flag. This will minify assets and fingerp
 ```bash
 webpack -p
 ```
-
-# Upcoming React-based UI
-
-A modified UI is currently under construction and can be viewed at [/rich_subscriptions/new](https://raptmap.com/rich_subscriptions/new). Notable tools include [Leaflet](http://leafletjs.com/), [React](https://facebook.github.io/react/), and [Redux](http://redux.js.org/). Related Javascript and JSX can be found in `/app/assets/javascripts/map`.
-
-
-# Major tasks ahead
-
-* The UI and UX need a lot more care. Will re-integrate React-based mapping tools into current UI and see how that goes.
-
-* Some of the location-based database queries, while working, are highly inefficient. Need to optimize.
-
-* Nginx configs currently differ between dev and prod due to SSL complications. I don't like this. There's probably a solution involving use of self-signed SSL certs in dev. Need to investigate.
-
-* Must finish Japanese localization.
-
-* Must build out integration and controller testing suites once the UI takes real shape.
-
-* If resources permit, move the topic search off of [pg_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) and over to [Elasticsearch](https://github.com/elastic/elasticsearch).
-
-* If resources permit, move geocoding onto a custom instance of [Pelias](http://pelias.io).
